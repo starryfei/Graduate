@@ -1,0 +1,10 @@
+package com.starry.service;
+
+import java.util.List;
+
+import com.starry.entity.User;
+
+public interface IUserService {
+	  public abstract List<User> selectAll();
+
+}

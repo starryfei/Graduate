@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/starry" />
+				<property name="username" value="root" />
+				<property name="password" value="123" />
+<!-- 				<property name="initialSize" value="1" />
+				<property name="maxActive" value="20" />
+				<property name="minIdle" value="1" />
+				<property name="maxWait" value="60000" />
+				<property name="validationQuery" value="${validationQuery}" />
+				<property name="testOnBorrow" value="true" />
+				<property name="testOnReturn" value="false" />
+				<property name="testWhileIdle" value="true" />
+				<property name="timeBetweenEvictionRunsMillis" value="60000" />
+				<property name="minEvictableIdleTimeMillis" value="25200000" />
+				<property name="removeAbandoned" value="true" />
+				<property name="removeAbandonedTimeout" value="1800" />
+				<property name="logAbandoned" value="true" />
+				<property name="filters" value="mergeStat" /> -->
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!-- 注册userMapper.xml文件， userMapper.xml位于me.gacl.mapping这个包下，所以resource写成me/gacl/mapping/userMapper.xml -->
+		<mapper resource="com/starry/mapping/userMapping.xml" />
+	</mappers>
+
+</configuration>
