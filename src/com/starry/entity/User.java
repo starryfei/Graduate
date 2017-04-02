@@ -9,15 +9,38 @@ public class User {
 	private String name;
 	private String pwd;
 	private int id;
+	private String tel;
+	private String info;
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+
+	
 
 	public User() {
 	}
 
-	public User(String name, String pwd, int id) {
+	public User(String name, String pwd, int id,String tel, String info) {
 		super();
 		this.name = name;
 		this.pwd = pwd;
 		this.id = id;
+		this.tel=tel;
+		this.info=info;
 	}
 
 	@GeneratedValue
@@ -48,7 +71,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", pwd=" + pwd + ", id=" + id + "]";
+		return "User [name=" + name + ", pwd=" + pwd + ", id=" + id + ", tel="
+				+ tel + ", info=" + info + "]";
 	}
+
 
 }

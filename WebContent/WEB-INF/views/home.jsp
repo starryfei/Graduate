@@ -27,12 +27,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td>ID</td>
         <td>NAME</td>
         <td>AGE</td>
+        <td>tel</td>
+        <td>info</td>
        </tr>
        <c:forEach items="${users}" var="user">
        <tr>
        <td>${user.id}</td>
        <td>${user.name}</td>
        <td>${user.pwd}</td>
+       <td>${user.tel}</td>
+       <td>${user.info}</td>
        </tr>
        </c:forEach>
     </table>
