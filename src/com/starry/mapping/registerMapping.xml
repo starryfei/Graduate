@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.starry.dao.IRegisterDao">
-<insert id="register"  parameterType="com.starry.entity.UserRegister">
+<!-- <insert id="register"  parameterType="com.starry.entity.UserRegister">
       insert into register(name,pwd,tel,address) values(#{name},#{pwd},#{tel},#{address})
-     </insert>
+     </insert> -->
 </mapper>

@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+/**
+ * ”√ªß
+ * @author Administrator
+ *
+ */
 public class User {
 	private String name;
 	private String pwd;
@@ -27,24 +32,17 @@ public class User {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-
-
-	
-
 	public User() {
 	}
 
-	public User(String name, String pwd, int id,String tel, String info) {
+	public User(String name, String pwd, String tel, String info) {
 		super();
 		this.name = name;
 		this.pwd = pwd;
-		this.id = id;
 		this.tel=tel;
 		this.info=info;
 	}
 
-	@GeneratedValue
-	@Id
 	public String getName() {
 		return name;
 	}

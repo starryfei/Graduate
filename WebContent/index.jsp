@@ -37,7 +37,7 @@ function login(){
 	 用户名：<input type="text" name="name" id="name"><br>
 	 密码:<input type="password" name="pwd" id="pwd"><br>
 	  tel：<input type="text" name="tel" id="tel"><br>
-	address:<input type="text" name="address" id="address"><br>
+	address:<input type="text" name="info" id="info"><br>
 	 <input value="login" type="submit" >
 	  
 	 </form>

@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -36,6 +37,22 @@ public class IUserDaoImpl extends SqlSessionDaoSupport implements IUserDao {
 		// TODO Auto-generated method stub
 		int result = this.getSqlSession().delete("deleteById", id);
 		return result;
+	}
+
+
+	@Override
+	public int register(User users) {
+		// TODO Auto-generated method stub
+		   int result =this.getSqlSession().insert("register",users);
+	        System.out.println("registerImpl  "+result);
+			return result;
+	}
+
+
+	@Override
+	public int update(User user) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
