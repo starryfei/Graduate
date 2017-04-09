@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+user agent stylesheet
+div {
+    display: block;
+}
+.login-page, .password-reset-page, .complete-profile-page, #login_modal, .signup-verify-page {
+    margin-top: 10%;
+    width: 100%;
+    max-width: 450px;
+}
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+  .center-container {
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14);
+    border-radius: 6px;
+    background-color: white;
+}
+.text-center {
+    text-align: center;
+}
+body.silver-bg {
+    background: #808080;
+}
+.forget-password pull-right{
+	text-align: right;
+	color: green;
+}
