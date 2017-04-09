@@ -6,14 +6,13 @@ import javax.persistence.Entity;
 
 @Entity
 /**
- * 订单
  * @author Administrator
  *
  */
 public class Order {
 	private int oNumber;
-	private String sNumber;//上班表
-	private int id;//用户
+	private String sNumber;
+	private int id;
 	private Date oTime;
 	private String price;
 	public int getoNumber() {

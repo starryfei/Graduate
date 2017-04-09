@@ -6,7 +6,6 @@ import javax.persistence.Id;
 
 @Entity
 /**
- * ”√ªß
  * @author Administrator
  *
  */

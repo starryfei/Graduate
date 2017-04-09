@@ -4,15 +4,20 @@ import javax.persistence.Entity;
 
 @Entity
 /**
- * π‹¿Ì‘±
  * @author Administrator
  *
  */
 public class Administor {
+	@Override
+	public String toString() {
+		return "Administor [aNumber=" + aNumber + ", Name=" + Name + ", Pwd="
+				+ Pwd + ", status=" + status + "]";
+	}
+
 	private String aNumber;
-	private String aName;
-	private String aPwd;
-	private int status;
+	private String Name;
+	private String Pwd;
+	private int status;//
 
 	public String getaNumber() {
 		return aNumber;
@@ -22,21 +27,6 @@ public class Administor {
 		this.aNumber = aNumber;
 	}
 
-	public String getaName() {
-		return aName;
-	}
-
-	public void setaName(String aName) {
-		this.aName = aName;
-	}
-
-	public String getaPwd() {
-		return aPwd;
-	}
-
-	public void setaPwd(String aPwd) {
-		this.aPwd = aPwd;
-	}
 
 	public int getStatus() {
 		return status;
@@ -46,10 +36,21 @@ public class Administor {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Administor [aNumber=" + aNumber + ", aName=" + aName
-				+ ", aPwd=" + aPwd + ", status=" + status + "]";
+	public String getName() {
+		return Name;
 	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public String getPwd() {
+		return Pwd;
+	}
+
+	public void setPwd(String pwd) {
+		Pwd = pwd;
+	}
+
 
 }

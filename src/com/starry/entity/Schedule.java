@@ -4,15 +4,14 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 /**
- * 医生值班
  * @author Administrator
  *
  */
 @Entity
 public class Schedule {
 	private int sNumber;
-	private String dNumber;//医生number
-	private String cNumber;//科室
+	private String dNumber;//
+	private String cNumber;//
 	private int total;
 	private String price;
 	private Date sTime;

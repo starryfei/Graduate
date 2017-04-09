@@ -9,7 +9,7 @@ public interface IDoctorService {
 
 	public abstract int deleteById(int number);
 
-	public abstract int insert(Doctor doctor);// Ìí¼Ó
+	public abstract int insert(Doctor doctor);// 
 
-	public abstract int update(Doctor doctor);// ÐÞ¸Ä
+	public abstract int update(Doctor doctor);// 
 }

@@ -4,14 +4,13 @@ import javax.persistence.Entity;
 
 @Entity
 /**
- * ฟฦสา
  * @author Administrator
  *
  */
 public class Department {
 	private String cNumber;
 	private String dName;
-	private String dDec;//ฟฦสาร่ส๖
+	private String dDec;//
 	
 	public String getcNumber() {
 		return cNumber;

@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 
 @Entity
 /**
- * Ò½Éú
  * @author Administrator
  *
  */
@@ -14,7 +13,7 @@ public class Doctor {
 	private String dNumber;
 	private String dName;
 	private String dPwd;
-	private String cNumber;//¿ÆÊÒ
+	private String cNumber;
 	private String dInfo;
 	private String dResume;
 	private String dTel;

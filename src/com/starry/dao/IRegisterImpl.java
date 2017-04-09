@@ -16,7 +16,6 @@ public class IRegisterImpl extends SqlSessionDaoSupport implements IRegisterDao 
 	        this.setSqlSessionFactory(sessionFactory);
 	    }
 	public int register(UserRegister userRegister) {
-		// TODO Auto-generated method stub
         int result =this.getSqlSession().insert("register",userRegister);
         System.out.println("registerImpl  "+result);
 		return result;
