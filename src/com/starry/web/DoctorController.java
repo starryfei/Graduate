@@ -39,7 +39,7 @@ public class DoctorController {
 		return "success";
 	}
 	@RequestMapping(value = "/addDoctor", method = RequestMethod.POST)
-	public String register(@RequestParam("dNumber") String dNumber,
+	public String register(@RequestParam("file") MultipartFile file, @RequestParam("dNumber") String dNumber,
 			@RequestParam("dName") String dName,
 			@RequestParam("dPwd") String dPwd,
 			@RequestParam("cNumber") String cNumber,
@@ -48,7 +48,22 @@ public class DoctorController {
 			@RequestParam("dTel") String dTel,
 			@RequestParam("dEmail") String dEmail,
 			Model model) {
-		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo, dResume, dTel,dEmail);
+		 //获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
+     			   HttpSession session= request.getSession();
+        	           String path = session.getServletContext().getRealPath("/");
+    			   System.out.println("getRealPath('/'):"+path);
+        		   int end = path.indexOf("t",19);
+                           String prePath = path.substring(0,end);
+                 //        String realPath = prePath+"\\WEB-INF\\images";
+                            String realPath = "d:\\temp";
+                                System.out.println("DEBUG:"+realPath);
+                                String picName = new Date().getTime()+".jpg";
+		 		if (!file.isEmpty()){
+            			FileUtils.copyInputStreamToFile(file.getInputStream(),new File(realPath,new Date().getTime()+".jpg"));
+       			 	}else if(content==null){
+            				content = "";//如果输入为null数据库不允许插入
+      				  }
+		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo, dResume, dTel,dEmail, "\\"+picName);
 		int a = doctorService.insert(doctor);
 		System.out.println(""+a);
 		if(a==1){
