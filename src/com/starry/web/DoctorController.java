@@ -1,7 +1,16 @@
 package com.starry.web;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.starry.entity.Doctor;
 import com.starry.service.IDoctorService;
@@ -38,8 +48,9 @@ public class DoctorController {
 		doctorService.deleteById(number);
 		return "success";
 	}
-	@RequestMapping(value = "addDoctor", method = RequestMethod.POST)
-	public String register(@RequestParam("dNumber") String dNumber,
+	@RequestMapping(value = "/addDoctor", method = RequestMethod.POST)
+	public String register(@RequestParam("file") MultipartFile file, @Param("content") String content,HttpServletRequest request,
+			@RequestParam("dNumber") String dNumber,
 			@RequestParam("dName") String dName,
 			@RequestParam("dPwd") String dPwd,
 			@RequestParam("cNumber") String cNumber,
@@ -48,7 +59,27 @@ public class DoctorController {
 			@RequestParam("dTel") String dTel,
 			@RequestParam("dEmail") String dEmail,
 			Model model) {
-		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo, dResume, dTel,dEmail);
+		 //获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
+     			   HttpSession session= request.getSession();
+        	           String path = session.getServletContext().getRealPath("/");
+    			   System.out.println("getRealPath('/'):"+path);
+        		   int end = path.indexOf("t",19);
+                           String prePath = path.substring(0,end);
+                 //        String realPath = prePath+"\\WEB-INF\\images";
+                            String realPath = "d:\\temp";
+                                System.out.println("DEBUG:"+realPath);
+                                String picName = new Date().getTime()+".jpg";
+                                if (!file.isEmpty()) {
+                        			try {
+										FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, picName));
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+                        		} else if (content == null) {
+                        			content = "";// 如果输入为null数据库不允许插入
+                        		}
+		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo, dResume, dTel,dEmail, "\\"+picName);
 		int a = doctorService.insert(doctor);
 		System.out.println(""+a);
 		if(a==1){

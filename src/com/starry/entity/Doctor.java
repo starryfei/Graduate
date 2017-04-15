@@ -18,6 +18,8 @@ public class Doctor {
 	private String dResume;
 	private String dTel;
 	private String dEmail;
+	private String image;
+	
 	public String getdEmail() {
 		return dEmail;
 	}
@@ -82,9 +84,14 @@ public class Doctor {
 	public void setdTel(String dTel) {
 		this.dTel = dTel;
 	}
-
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getImage() {
+		return image;
+	}
 	public Doctor(String dNumber, String dName, String dPwd, String cNumber,
-			String dInfo, String dResume, String dTel, String dEmail) {
+			String dInfo, String dResume, String dTel, String dEmail, String image) {
 		super();
 		this.dNumber = dNumber;
 		this.dName = dName;
@@ -94,6 +101,7 @@ public class Doctor {
 		this.dResume = dResume;
 		this.dTel = dTel;
 		this.dEmail = dEmail;
+		this.image = image;
 	}
 
 	@Override

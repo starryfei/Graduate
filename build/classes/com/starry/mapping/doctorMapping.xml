@@ -11,7 +11,7 @@
 	</delete>
 	<insert id="addDoctor"  parameterType="com.starry.entity.Doctor">
       insert into 
-      doctor (dNumber,dName,dPwd,cNumber,dInfo,dResume,dTel,dEmail) 
-      values (#{dnumber},#{dname},#{dpwd},#{cnumber},#{dinfo},#{dresume},#{dtel},#{demail})
+      doctor (dNumber,dName,dPwd,cNumber,dInfo,dResume,dTel,dEmail，image) 
+      values (#{dnumber},#{dname},#{dpwd},#{cnumber},#{dinfo},#{dresume},#{dtel},#{demail},#{image})
      </insert>
 </mapper>
