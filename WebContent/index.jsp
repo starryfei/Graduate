@@ -18,26 +18,36 @@
   <div class="logo margin-big-left fadein-top">
     <h1><img src="images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
   </div>
-  <div class="head-l"><a class="button button-little bg-green" href="" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;<a href="##" class="button button-little bg-blue"><span class="icon-wrench"></span> 清除缓存</a> &nbsp;&nbsp;<a class="button button-little bg-red" href="login.html"><span class="icon-power-off"></span> 退出登录</a> </div>
+  <div class="head-l"><a class="button button-little bg-green" href="" target="_blank"><span class="icon-home"></span>${name }</a> &nbsp;&nbsp;<a href="##" class="button button-little bg-blue"><span class="icon-wrench"></span> 清除缓存</a> &nbsp;&nbsp;<a class="button button-little bg-red" href="login.html"><span class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav">
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
   <h2><span class="icon-user"></span>科室管理</h2>
   <ul style="display:block">
    <li><a href="page.html" target="right"><span class="icon-caret-right"></span>添加科室</a></li>  
-    <li><a href="info.html" target="right"><span class="icon-caret-right"></span>医生管理</a></li>
-    <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
-    <li><a href="adv.html" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>   
-    <li><a href="book.html" target="right"><span class="icon-caret-right"></span>留言管理</a></li>     
-    <li><a href="column.html" target="right"><span class="icon-caret-right"></span>栏目管理</a></li>
+  
+   
+    <li><a href="./getDepart" target="right"><span class="icon-caret-right"></span>科室信息</a></li>   
+  
+    <li><a href="column.html" target="right"><span class="icon-caret-right"></span>删除科室</a></li>
   </ul>   
-  <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
+  <h2><span class="icon-pencil-square-o"></span>医生管理</h2>
   <ul>
-    <li><a href="list.html" target="right"><span class="icon-caret-right"></span>内容管理</a></li>
-    <li><a href="add.html" target="right"><span class="icon-caret-right"></span>添加内容</a></li>
+    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>添加医生</a></li>
+    <li><a href="list.html" target="right"><span class="icon-caret-right"></span></a></li>
+    <li><a href="add.html" target="right"><span class="icon-caret-right"></span>删除医生</a></li>
     <li><a href="cate.html" target="right"><span class="icon-caret-right"></span>分类管理</a></li>        
   </ul>  
+  <h2><span class="icon-pencil-square-o"></span>缴帐管理</h2>
+  <ul>
+    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>添加医生</a></li>
+    </ul>
     <h2><span class="icon-pencil-square-o"></span>其他</h2>
+    <ul>
+     <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
+    <li><a href="book.html" target="right"><span class="icon-caret-right"></span>反馈管理</a></li>
+      <li><a href="book.html" target="right"><span class="icon-caret-right"></span>公告管理</a></li>          
+    </ul>
 </div>
 <script type="text/javascript">
 $(function(){

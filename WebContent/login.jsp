@@ -20,7 +20,7 @@
             <div style="height:150px;"></div>
             <div class="media media-y margin-big-bottom">           
             </div>         
-            <form action="login" method="post">
+            <form action="index" method="post">
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
@@ -43,7 +43,19 @@
                                                    
                         </div>
                     </div> 
+                    <div class="form-group">
+					&nbsp;&nbsp;	<label> <input type="checkbox" value="remember-me">
+						Remember me
+						</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						 <label> <input type="radio" name="status" value="1">
+						管理员
+						</label> &nbsp;&nbsp;&nbsp;&nbsp;
+						<label> <input type="radio" name="status" value="2">
+						医生
+						</label>
+					</div>
                 </div>
+                
                 <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
             </div>
             </form>          

@@ -36,20 +36,23 @@ public class DoctorController {
 	public void setDoctorService(IDoctorService doctorService) {
 		this.doctorService = doctorService;
 	}
+
 	@RequestMapping(value = "Djson", produces = "application/json")
-	public @ResponseBody
-	List<Doctor> getJson() {
+	public @ResponseBody List<Doctor> getJson() {
 		List<Doctor> list = doctorService.selectAll();
-			System.out.println("DoctorController"+list);
+		System.out.println("DoctorController" + list);
 		return list;
 	}
-	@RequestMapping(value="Ddelete" ,method=RequestMethod.POST)
-	public String delete(@RequestParam("number") int number){
+//, method = RequestMethod.POST
+	@RequestMapping(value = "Ddelete")
+	public String delete(@RequestParam("number") int number) {
 		doctorService.deleteById(number);
 		return "success";
-	}
-	@RequestMapping(value = "/addDoctor", method = RequestMethod.POST)
-	public String register(@RequestParam("file") MultipartFile file, @Param("content") String content,HttpServletRequest request,
+	} 
+//, method = RequestMethod.POST
+	@RequestMapping(value = "addDoctor")
+	public String register(@RequestParam("file") MultipartFile file,
+			@Param("content") String content, HttpServletRequest request,
 			@RequestParam("dNumber") String dNumber,
 			@RequestParam("dName") String dName,
 			@RequestParam("dPwd") String dPwd,
@@ -58,40 +61,44 @@ public class DoctorController {
 			@RequestParam("dResume") String dResume,
 			@RequestParam("dTel") String dTel,
 			@RequestParam("dEmail") String dEmail,
+			@RequestParam("image") String images,
+			
 			Model model) {
-		 //获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
-     			   HttpSession session= request.getSession();
-        	           String path = session.getServletContext().getRealPath("/");
-    			   System.out.println("getRealPath('/'):"+path);
-        		   int end = path.indexOf("t",19);
-                           String prePath = path.substring(0,end);
-                 //        String realPath = prePath+"\\WEB-INF\\images";
-                            String realPath = "d:\\temp";
-                                System.out.println("DEBUG:"+realPath);
-                                String picName = new Date().getTime()+".jpg";
-                                if (!file.isEmpty()) {
-                        			try {
-										FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, picName));
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-                        		} else if (content == null) {
-                        			content = "";// 如果输入为null数据库不允许插入
-                        		}
-		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo, dResume, dTel,dEmail, "\\"+picName);
+		// 获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
+		HttpSession session = request.getSession();
+		String path = session.getServletContext().getRealPath("/");
+		System.out.println("getRealPath('/'):" + path);
+		int end = path.indexOf("t", 19);
+		String prePath = path.substring(0, end);
+		// String realPath = prePath+"\\WEB-INF\\images";
+		String realPath = "d:\\temp";
+		System.out.println("DEBUG:" + realPath);
+		String picName = new Date().getTime() + ".jpg";
+		if (!file.isEmpty()) {
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(),
+						new File(realPath, picName));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (content == null) {
+			content = "";// 如果输入为null数据库不允许插入
+		}
+		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo,
+				dResume, dTel, dEmail, "\\" + picName);
 		int a = doctorService.insert(doctor);
-		System.out.println(""+a);
-		if(a==1){
+		System.out.println("" + a);
+		if (a == 1) {
 			return "success";
 		}
-		return  "register";
+		return "register";
 	}
-	@RequestMapping(value="test")
-	public String test(){
+
+	@RequestMapping(value = "test")
+	public String test() {
 		System.out.println("test");
 		return "success";
 	}
-	
 
 }

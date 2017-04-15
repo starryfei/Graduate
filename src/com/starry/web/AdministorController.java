@@ -25,8 +25,8 @@ public class AdministorController {
 	public void setAdministorService(IAdministorService administorService) {
 		this.administorService = administorService;
 	}
-
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+//method = RequestMethod.POST)
+	@RequestMapping(value = "index")
 	public String login(@RequestParam("name") String name,
 			@RequestParam("pwd") String pwd, Model model) {
 		System.out.println(name+pwd);

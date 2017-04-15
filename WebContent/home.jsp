@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <a href="./getDepart">diak</a>
     <table>
        <tr>
         <td>ID</td>
@@ -37,6 +38,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>${user.pwd}</td>
        <td>${user.tel}</td>
        <td>${user.info}</td>
+       </tr>
+       </c:forEach>
+         <c:forEach items="${department}" var="department">
+       <tr>
+       <td>${department.cNumber}</td>
+       <td>${department.dName}</td>
+       <td>${department.dDec}</td>
+       <td>dd</td>
+       <td>dd</td>
        </tr>
        </c:forEach>
     </table>
