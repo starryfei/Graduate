@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
-    <title>网站信息</title>  
+    <title>添加医生</title>  
     <link rel="stylesheet" href="css/pintuer.css">
     <link rel="stylesheet" href="css/admin.css">
     <script src="js/jquery.js"></script>
@@ -13,21 +13,21 @@
 </head>
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 网站信息</strong></div>
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 添加医生信息</strong></div>
   <div class="body-content">
     <form method="post" class="form-x" action="">
       <div class="form-group">
         <div class="label">
-          <label>网站标题：</label>
+          <label>医生工号</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="stitle" value="" />
+          <input type="text" style="width:25%; float:left;" class="input" name="stitle" value="" />
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>网站LOGO：</label>
+          <label>医生照片</label>
         </div>
         <div class="field">
           <input type="text" id="url1" name="slogo" class="input tips" style="width:25%; float:left;" value="" data-toggle="hover" data-place="right" data-image=""  />
@@ -36,24 +36,25 @@
       </div>
       <div class="form-group">
         <div class="label">
-          <label>网站域名：</label>
+          <label>医生姓名：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="surl" value="" />
+          <input type="text" style="width:25%; float:left;" class="input" name="surl" value="" />
         </div>
       </div>
-      <div class="form-group" style="display:none">
+      <div class="form-group" >
         <div class="label">
-          <label>副加标题：</label>
+          <label>初始密码：</label>
+          
         </div>
         <div class="field">
-          <input type="text" class="input" name="sentitle" value="" />
+          <input type="text" style="width:25%; float:left;" class="input" name="surl" value="" />
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>网站关键字：</label>
+          <label>所属科室：</label>
         </div>
         <div class="field">
           <textarea class="input" name="skeywords" style="height:80px"></textarea>
@@ -62,7 +63,7 @@
       </div>
       <div class="form-group">
         <div class="label">
-          <label>网站描述：</label>
+          <label>医生描述：</label>
         </div>
         <div class="field">
           <textarea class="input" name="sdescription"></textarea>
@@ -71,7 +72,7 @@
       </div>
       <div class="form-group">
         <div class="label">
-          <label>联系人：</label>
+          <label>职称：</label>
         </div>
         <div class="field">
           <input type="text" class="input" name="s_name" value="" />
@@ -80,7 +81,7 @@
       </div>
       <div class="form-group">
         <div class="label">
-          <label>手机：</label>
+          <label>联系方式：</label>
         </div>
         <div class="field">
           <input type="text" class="input" name="s_phone" value="" />
@@ -89,14 +90,14 @@
       </div>
       <div class="form-group">
         <div class="label">
-          <label>电话：</label>
+          <label>email：</label>
         </div>
         <div class="field">
           <input type="text" class="input" name="s_tel" value="" />
           <div class="tips"></div>
         </div>
       </div>
-      <div class="form-group" style="display:none;">
+     <!--  <div class="form-group" style="display:none;">
         <div class="label">
           <label>400电话：</label>
         </div>
@@ -164,12 +165,12 @@
       <div class="form-group">
         <div class="label">
           <label></label>
-        </div>
+        </div>-->
         <div class="field">
           <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
         </div>
-      </div>
+      </div> 
     </form>
   </div>
-</div>
+
 </body></html>

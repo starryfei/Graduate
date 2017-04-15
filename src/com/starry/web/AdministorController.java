@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.starry.service.IAdministorService;
 
 @Controller
-@RequestMapping("/administor")
+@RequestMapping("/")
 public class AdministorController {
 	@Autowired
 	
@@ -26,7 +26,7 @@ public class AdministorController {
 		this.administorService = administorService;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(@RequestParam("name") String name,
 			@RequestParam("pwd") String pwd, Model model) {
 		System.out.println(name+pwd);
@@ -37,6 +37,6 @@ public class AdministorController {
 			model.addAttribute("pwd", pwd);
 			return "index";
 		}
-		return "success";
+		return "login";
 	}
 }

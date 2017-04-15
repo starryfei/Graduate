@@ -16,7 +16,7 @@ import com.starry.entity.User;
 import com.starry.service.IUserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 	@Autowired
 	private IUserService userService;
@@ -40,7 +40,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/findAllUser", method = RequestMethod.GET)
+	@RequestMapping(value = "findAllUser", method = RequestMethod.GET)
 	public String home(Model model) {
 		List<User> users = userService.selectAll();
 		model.addAttribute("users", users);
@@ -48,21 +48,21 @@ public class UserController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/json1", produces = "application/json")
+	@RequestMapping(value = "json1", produces = "application/json")
 	public @ResponseBody
 	List<User> getJson() {
 		List<User> list = userService.selectAll();
 		System.out.println(list);
 		return list;
 	}
-	@RequestMapping(value="/delete" ,method=RequestMethod.POST)
+	@RequestMapping(value="delete" ,method=RequestMethod.POST)
 	public String delete(@RequestParam("id") int id){
 		userService.deleteById(id);
 		System.out.println(id);
 		return "success";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String register(@RequestParam("name") String name,
 			@RequestParam("pwd") String pwd,
 			@RequestParam("tel") String tel,

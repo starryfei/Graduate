@@ -13,7 +13,7 @@
 	<!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<bean id="multipartResolver"
