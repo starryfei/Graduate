@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,34 +20,33 @@
 </head>
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 单页信息</strong></div>
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 添加科室信息</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="">      
+    <form method="post" class="form-x" action="addDepart">      
       <div class="form-group">
         <div class="label">
-          <label>标题：</label>
+          <label>科室编号：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="title" value="" />
-          <div class="tips"></div>
+          <input type="text" name="cNumber" class="input" style="width: 25%; float: left; value="" />
+          <div class="tipss"><font color="red">*必填项</font></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>图片：</label>
+          <label>科室名字：</label>
         </div>
         <div class="field">
-          <input type="text" id="url1" name="img" class="input tips" style="width:25%; float:left;"  value=""  data-toggle="hover" data-place="right" data-image="" />
-          <input type="button" class="button bg-blue margin-left" id="image1" value="+ 浏览上传"  style="float:left;">
-          <div class="tipss">图片尺寸：500*200</div>
+         <input type="text" class="input"  name="dName" style="width: 25%; float: left; value="" />
+          <div class="tipss"><font color="red">*必填项</font></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>内容：</label>
+          <label>科室描述内容：</label>
         </div>
         <div class="field">
-          <textarea name="content"></textarea>
+         <textarea name="dDec"  style="width: 50%; float: left; class="input"></textarea>
           <div class="tips"></div>
         </div>
       </div>

@@ -10,6 +10,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.starry.entity.Administor;
+import com.starry.entity.Department;
+import com.starry.entity.Doctor;
 
 @Repository("administorDao")
 public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministorDao {
@@ -25,5 +27,15 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 		if(!list.isEmpty())
 			return true;
 		return false;
+	}
+	@Override
+	public int addDepart(Department department) {
+		System.out.println("department"+department);
+		return this.getSqlSession().insert("adDepart",department);
+	}
+	@Override
+	public int addDoctor(Doctor doctor) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

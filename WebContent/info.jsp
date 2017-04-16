@@ -40,7 +40,7 @@
 					<div class="field">
 						<input type="text" style="width: 25%; float: left;" class="input"
 							name="stitle" value="" />
-						<div class="tips"></div>
+						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -61,7 +61,9 @@
 					<div class="field">
 						<input type="text" style="width: 25%; float: left;" class="input"
 							name="surl" value="" />
+							<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
+					
 				</div>
 				<div class="form-group">
 					<div class="label">
@@ -71,7 +73,7 @@
 					<div class="field">
 						<input type="text" style="width: 25%; float: left;" class="input"
 							name="surl" value="" />
-						<div class="tips"></div>
+						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -84,7 +86,7 @@
 								<option value="">${department.dName}</option>
 							</c:forEach>
 						</select>
-						<div class="tips"></div>
+						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 					</div>
 					<div class="form-group">
@@ -92,7 +94,7 @@
 							<label>医生描述：</label>
 						</div>
 						<div class="field">
-							<textarea class="input" name="sdescription"></textarea>
+							<textarea class="input" style="width: 50%; float: left; name="sdescription"></textarea>
 							<div class="tips"></div>
 						</div>
 					</div>
@@ -101,8 +103,8 @@
 							<label>职称：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="s_name" value="" />
-							<div class="tips"></div>
+							<input type="text" class="input" style="width: 25%; float: left; name="s_name" value="" />
+							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -110,8 +112,8 @@
 							<label>联系方式：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="s_phone" value="" />
-							<div class="tips"></div>
+							<input type="text" class="input" style="width: 25%; float: left; name="s_phone" value="" />
+							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -119,11 +121,11 @@
 							<label>email：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="s_tel" value="" />
-							<div class="tips"></div>
+							<input type="text" class="input" name="s_tel" style="width: 25%; float: left; value="" />
+							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
-					<div class="field">
+					<div class="field" align="center">
 						<button class="button bg-main icon-check-square-o" type="submit">
 							提交</button>
 					</div>

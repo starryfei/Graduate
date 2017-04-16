@@ -22,8 +22,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="panel admin-panel">
   <div class="panel-head"><strong class="icon-reorder"> 科室信息</strong></div>
   <div class="padding border-bottom">  
-  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a>
+ <!--  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a> -->
+ <ul class="search" style="padding-left:10px;">
+  <select name="s_istop" class="input" onchange="changesearch()"  style="width:100px; line-height:17px;display:inline-block">
+            <option value="">科室编号</option>
+            <option value="1">科室名字</option>
+          </select>
+        <li>
+          <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
+      </ul>
   </div>
+  
   <table class="table table-hover text-center">
     <tr>
       <th width="10%">科室编号</th>
@@ -45,6 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div></td>
     </tr>
      </c:forEach>
+     <tr>
+        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+      </tr>
   </table>
 </div>
 <script type="text/javascript">

@@ -35,5 +35,12 @@ public class Department {
 		return "Department [cNumber=" + cNumber + ", dName=" + dName
 				+ ", dDec=" + dDec + "]";
 	}
+	public Department(String cNumber, String dName, String dDec) {
+		super();
+		this.cNumber = cNumber;
+		this.dName = dName;
+		this.dDec = dDec;
+	}
+	
 	
 }

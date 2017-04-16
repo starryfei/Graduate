@@ -6,4 +6,12 @@
 		where
 		Name=#{Name} and Pwd=#{Pwd}
 	</select>
+	
+	<insert id="adDepart" parameterType="com.starry.entity.Department">
+	insert ignore  into Department values(#{cNumber},#{dName},#{dDec})
+	</insert>
+	
+	<insert id="adDoctor" parameterType="com.starry.entity.Doctor">
+	insert ignore  into Doctor values(#{cNumber},#{dName},#{dDec})
+	</insert>
 </mapper>
