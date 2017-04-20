@@ -34,4 +34,9 @@ public class IDepartmentServiceImpl implements IDepartmentService {
 		return departmentDao.findName(info);
 	}
 
+	@Override
+	public List<Department> findId(String info) {
+		return departmentDao.findId(info);
+	}
+
 }

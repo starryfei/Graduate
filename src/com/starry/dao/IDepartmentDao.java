@@ -12,4 +12,5 @@ public interface IDepartmentDao {
 	public abstract int DeleteById(String id); 
 	
 	public abstract List<Department> findName(String info);
+	public abstract List<Department> findId(String info);
 }

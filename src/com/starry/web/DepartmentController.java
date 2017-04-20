@@ -42,11 +42,24 @@ public class DepartmentController {
 	public String delById( String cNumber){
 		System.out.println(cNumber);
 		departmentService.delById(cNumber);
-		return "adv";
+		return "redirect:/getDepart";
 	}
 	@RequestMapping(value="find")
-	public String findName(@RequestParam("info") String info){
-		departmentService.findName(info);
-		return "adv";
+	public String findName(Model model, String info,String chose){
+		//chose=1,按照科室搜索
+		//2姓名搜索
+		System.out.println(info +chose);
+		if(chose.equals("1")){
+			List<Department> departments=departmentService.findId(info);
+			System.out.println(departments);
+			model.addAttribute("department", departments);
+			return "adv";
+		}
+		if(chose.equals("2")){
+			List<Department> department=departmentService.findName(info);
+			model.addAttribute("department", department);
+			return "adv";
+		}
+		return "404";
 	}
 }

@@ -10,4 +10,5 @@ public interface IDepartmentService {
 	public abstract int delById(String id);
 	
 	public abstract List<Department> findName(String info);
+	public abstract List<Department> findId(String info);
 }

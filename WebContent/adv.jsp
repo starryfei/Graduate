@@ -21,25 +21,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div class="panel admin-panel">
   <div class="panel-head"><strong class="icon-reorder"> 科室信息</strong></div>
-  <div class="padding border-bottom">  
- <!--  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a> -->
+<!--   <div class="padding border-bottom">  
+  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a>
  <ul class="search" style="padding-left:10px;">
-  <select name="s_istop" class="input" onchange="changesearch()"  style="width:100px; line-height:17px;display:inline-block">
+  <select name="s_istop" id="s_istop" class="input"  style="width:100px; line-height:17px;display:inline-block">
             <option value="1">科室编号</option>
             <option value="2">科室名字</option>
           </select>
         <li>
-          <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+          <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
       </ul>
+  </div> -->
+   <div class="padding border-bottom">
+    <!-- <button type="button" class="button border-yellow" onclick="window.location.href='#add'"><span class="icon-plus-square-o"></span> 添加分类</button> -->
+   <select name="s_istop" id="s_istop"  class="input" style="width:100px; line-height:17px;display:inline-block">
+            <option value="1">科室编号</option>
+            <option value="2">科室名字</option>
+          </select>
+          <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>
+      </ul>
   </div>
-  
   <table class="table table-hover text-center">
     <tr>
       <th width="10%">科室编号</th>
       <th width="15%">名称</th>
       <th width="20%">描述</th>
-      <!-- <th width="10%">排序</th> -->
       <th width="15%">操作</th>
     </tr>
      <c:forEach items="${department}" var="department">
@@ -63,12 +71,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 function del(id){
 	if(confirm("您确定要删除吗?")){
-		if(id != ""){
+		if(id != ""){ 
 	    	window.location.href = "delByid?cNumber="+id+"";
-	    	}
+	    	 } 
 	}
 }
 function changesearch(){
+	var chose = document.getElementById("s_istop").value;
+	var info = document.getElementById("keywords").value;
+	/* alert(chose+"  "+info) */
+	window.location.href = "find?info="+info+"&chose="+chose+"";
+	
 }
 </script>
 
