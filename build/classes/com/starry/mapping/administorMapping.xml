@@ -6,12 +6,16 @@
 		where
 		Name=#{Name} and Pwd=#{Pwd}
 	</select>
-	
+	<!-- //添加科室 -->
 	<insert id="adDepart" parameterType="com.starry.entity.Department">
 	insert ignore  into Department values(#{cNumber},#{dName},#{dDec})
 	</insert>
 	
+	<!-- //String dNumber, String dName, String dPwd, String cNumber,
+			String dInfo, String dResume, String dTel, String dEmail, String image -->
 	<insert id="adDoctor" parameterType="com.starry.entity.Doctor">
-	insert ignore  into Doctor values(#{cNumber},#{dName},#{dDec})
+	insert ignore  into Doctor values(#{dNumber},#{dName},#{dPwd},#{dDec},#{cNumber},#{dInfo},#{dResume},#{dTel},#{dEmail},#{image})
 	</insert>
+	
+	
 </mapper>

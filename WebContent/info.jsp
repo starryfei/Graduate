@@ -38,8 +38,8 @@
 						<label>医生工号</label>
 					</div>
 					<div class="field">
-						<input type="text" style="width: 25%; float: left;" class="input"
-							name="stitle" value="" />
+						<input type="text" name="dNumber" style="width: 25%; float: left;" class="input"
+							 value="" />
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 						<label>医生照片</label>
 					</div>
 					<div class="field">
-						<input type="text" id="url1" name="slogo" class="input tips"
+						<input type="text" id="url1" name="image" class="input tips"
 							style="width: 25%; float: left;" value="" data-toggle="hover"
 							data-place="right" data-image="" /> <input type="button"
 							class="button bg-blue margin-left" id="image1" value="+ 浏览上传">
@@ -59,8 +59,8 @@
 						<label>医生姓名：</label>
 					</div>
 					<div class="field">
-						<input type="text" style="width: 25%; float: left;" class="input"
-							name="surl" value="" />
+						<input type="text" name="dName"  style="width: 25%; float: left;" class="input"
+							value="" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 					
@@ -71,8 +71,8 @@
 
 					</div>
 					<div class="field">
-						<input type="text" style="width: 25%; float: left;" class="input"
-							name="surl" value="" />
+						<input type="text" name="dPwd" style="width: 25%; float: left;" class="input"
+							 value="" />
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 						<label>所属科室：</label>
 					</div>
 					<div class="field">
-						<select name="cid" class="input w50">
+						<select name="cNumber" class="input w50">
 							<c:forEach items="${department}" var="department">
 								<option value="">${department.dName}</option>
 							</c:forEach>
@@ -94,7 +94,7 @@
 							<label>医生描述：</label>
 						</div>
 						<div class="field">
-							<textarea class="input" style="width: 50%; float: left; name="sdescription"></textarea>
+							<textarea class="input" name="dInfo" style="width: 50%; float: left value=""></textarea>
 							<div class="tips"></div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 							<label>职称：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" style="width: 25%; float: left; name="s_name" value="" />
+							<input type="text" class="input" name="dResume"  style="width: 25%; float: left; value="" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 							<label>联系方式：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" style="width: 25%; float: left; name="s_phone" value="" />
+							<input type="text" name="dTel" class="input" style="width: 25%; float: left;  value="" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 							<label>email：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="s_tel" style="width: 25%; float: left; value="" />
+							<input type="text" class="input" name="dEmail" style="width: 25%; float: left; value="" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>

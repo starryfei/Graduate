@@ -24,4 +24,14 @@ public class IDepartmentServiceImpl implements IDepartmentService {
 		return departmentDao.getAll();
 	}
 
+	@Override
+	public int delById(String id) {
+		return departmentDao.DeleteById(id);
+	}
+
+	@Override
+	public List<Department> findName(String info) {
+		return departmentDao.findName(info);
+	}
+
 }

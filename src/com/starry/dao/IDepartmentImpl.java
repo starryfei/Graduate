@@ -20,5 +20,15 @@ public class IDepartmentImpl extends SqlSessionDaoSupport implements IDepartment
 	public List<Department> getAll() {
 		return getSqlSession().selectList("getcla");
 	}
+	@Override
+	public int DeleteById(String id) {
+		int result = this.getSqlSession().delete("delById", id);
+		return result;
+	}
+	@Override
+	public List<Department> findName(String info) {
+		System.out.println(this.getSqlSession().selectList("getByName", info));
+		return this.getSqlSession().selectList("getByName", info);
+	}
 
 }

@@ -6,4 +6,8 @@ import com.starry.entity.Department;
 
 public interface IDepartmentService {
 	public abstract List<Department> getAll();
+	
+	public abstract int delById(String id);
+	
+	public abstract List<Department> findName(String info);
 }

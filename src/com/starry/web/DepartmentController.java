@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.starry.entity.Department;
 import com.starry.service.IDepartmentService;
@@ -36,5 +37,16 @@ public class DepartmentController {
 		model.addAttribute("department", departments);
 		System.out.println("Controller" + departments);
 		return "info";
+	}
+	@RequestMapping(value="delByid")
+	public String delById( String cNumber){
+		System.out.println(cNumber);
+		departmentService.delById(cNumber);
+		return "adv";
+	}
+	@RequestMapping(value="find")
+	public String findName(@RequestParam("info") String info){
+		departmentService.findName(info);
+		return "adv";
 	}
 }

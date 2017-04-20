@@ -25,8 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <!--  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a> -->
  <ul class="search" style="padding-left:10px;">
   <select name="s_istop" class="input" onchange="changesearch()"  style="width:100px; line-height:17px;display:inline-block">
-            <option value="">科室编号</option>
-            <option value="1">科室名字</option>
+            <option value="1">科室编号</option>
+            <option value="2">科室名字</option>
           </select>
         <li>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
@@ -50,8 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>${department.dDec}</td>
       
       <td><div class="button-group">
-      <a class="button border-main" href="#add"><span class="icon-edit"></span> 修改</a>
-      <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>
+      <a class="button border-main" href=""><span class="icon-edit"></span> 修改</a>
+      <a class="button border-red" href="javascript:void(0)" onclick="del(${department.cNumber})"><span class="icon-trash-o"></span> 删除</a>
       </div></td>
     </tr>
      </c:forEach>
@@ -61,10 +61,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
 </div>
 <script type="text/javascript">
-function del(id,mid){
+function del(id){
 	if(confirm("您确定要删除吗?")){
-	
+		if(id != ""){
+	    	window.location.href = "delByid?cNumber="+id+"";
+	    	}
 	}
+}
+function changesearch(){
 }
 </script>
 

@@ -4,4 +4,17 @@
 	<select id="getcla" resultType="com.starry.entity.Department">
 		select * from Department
 	</select>
+	
+	<select id="getById" resultType="com.starry.entity.Department">
+		select * from Department where cNumber=#{cNUmber}
+	</select>
+	<select id="getByName" resultType="com.starry.entity.Department">
+		select * from Department where dName=like "%"#{dName}"%"
+	
+	</select>
+	
+	<delete id="delById" parameterType="com.starry.entity.Department">
+		delete from Department
+		where cNumber=#{cNumber}
+	</delete>
 </mapper>

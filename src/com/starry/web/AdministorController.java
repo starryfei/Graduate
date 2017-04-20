@@ -47,11 +47,18 @@ public class AdministorController {
 		System.out.println(department);
 		int result = administorService.addDepart(department);
 		System.out.println(result);
+		return "redirect:/getDepart";
+	}
+	@RequestMapping(value="addDoctor", method = RequestMethod.POST)
+	public String adDoctor(@RequestParam(value="cNumber") String cNumber,@RequestParam(value="dName") String dName,@RequestParam(value="dDec") String dDec){
+		Department department = new Department(cNumber,dName,dDec);
+		System.out.println(department);
+		int result = administorService.addDepart(department);
+		System.out.println(result);
 //		if(result==1){
 			return "redirect:/getDepart";
 //		}
 //		return "404";
 	}
-			
 	
 }

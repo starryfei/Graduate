@@ -9,6 +9,7 @@ import com.starry.dao.IAdministorDao;
 import com.starry.dao.IDepartmentDao;
 import com.starry.entity.Administor;
 import com.starry.entity.Department;
+import com.starry.entity.Doctor;
 import com.starry.entity.User;
 
 @Service("administorService")
@@ -39,5 +40,10 @@ public class IAdministorServiceImpl implements IAdministorService {
 	public int addDepart(Department department) {
 		System.out.println(administorDao.addDepart(department));
 		return administorDao.addDepart(department);
+	}
+
+	@Override
+	public int addDoctor(Doctor doctor) {
+		return administorDao.addDoctor(doctor);
 	}
 }

@@ -35,7 +35,6 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 	}
 	@Override
 	public int addDoctor(Doctor doctor) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getSqlSession().insert("adDoctor",doctor);
 	}
 }
