@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.starry.entity.Administor;
 import com.starry.entity.Department;
 import com.starry.service.IAdministorService;
 
@@ -59,6 +60,12 @@ public class AdministorController {
 			return "redirect:/getDepart";
 //		}
 //		return "404";
+	}
+	@RequestMapping(value="updatePwd")
+	public String updatePwd(@RequestParam(value="Pwd") String Pwd,@RequestParam(value="aNumber") String aNumber,@RequestParam(value="Name") String name){
+		Administor administor = new Administor(aNumber, name, Pwd);
+		administorService.updatePwd(administor);
+		return "login";
 	}
 	
 }

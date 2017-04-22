@@ -52,5 +52,13 @@ public class Administor {
 		Pwd = pwd;
 	}
 
+	public Administor(String aNumber, String name, String pwd) {
+		super();
+		this.aNumber = aNumber;
+		Name = name;
+		Pwd = pwd;
+	}
 
+public Administor() {
+}
 }

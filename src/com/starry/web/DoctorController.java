@@ -43,12 +43,19 @@ public class DoctorController {
 		System.out.println("DoctorController" + list);
 		return list;
 	}
+	@RequestMapping(value = "getAllDoctor")
+	public  String selectAll(Model model) {
+		List<Doctor> alldoctor = doctorService.selectAll();
+		model.addAttribute("alldoctor", alldoctor);
+		return "allDoctor";
+	}
 //, method = RequestMethod.POST
 	@RequestMapping(value = "Ddelete")
 	public String delete(@RequestParam("number") int number) {
 		doctorService.deleteById(number);
 		return "success";
 	} 
+	
 //, method = RequestMethod.POST
 	@RequestMapping(value = "addDoctor")
 	public String register(@RequestParam("file") MultipartFile file,
@@ -95,10 +102,5 @@ public class DoctorController {
 		return "register";
 	}
 
-	@RequestMapping(value = "test")
-	public String test() {
-		System.out.println("test");
-		return "success";
-	}
 
 }

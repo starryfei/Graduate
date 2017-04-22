@@ -11,4 +11,6 @@ public interface IDepartmentService {
 	
 	public abstract List<Department> findName(String info);
 	public abstract List<Department> findId(String info);
+	
+	public abstract void update(Department department);
 }

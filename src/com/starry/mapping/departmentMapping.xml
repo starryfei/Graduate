@@ -16,4 +16,7 @@
 		delete from Department
 		where cNumber=#{cNumber}
 	</delete>
+	<update id="updateById" parameterType="com.starry.entity.Department">
+	update Department set dName=#{dName},dDec=#{dDec} where cNumber=#{cNumber}
+	</update>
 </mapper>

@@ -35,5 +35,10 @@ public class IDepartmentImpl extends SqlSessionDaoSupport implements IDepartment
 		System.out.println(this.getSqlSession().selectList("getById", info));
 		return this.getSqlSession().selectList("getById", info);
 	}
+	@Override
+	public void updateDepart(Department department) {
+		this.getSqlSession().update("updateById",department );
+		
+	}
 
 }

@@ -19,7 +19,6 @@ public class Doctor {
 	private String dTel;
 	private String dEmail;
 	private String image;
-	
 	public String getdEmail() {
 		return dEmail;
 	}

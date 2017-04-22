@@ -36,7 +36,7 @@
     <li><a href="./getName" target="right"><span class="icon-caret-right"></span>添加医生</a></li>
   <!--   <li><a href="list.html" target="right"><span class="icon-caret-right"></span></a></li>
     <li><a href="add.html" target="right"><span class="icon-caret-right"></span>删除医生</a></li> -->
-    <li><a href="cate.html" target="right"><span class="icon-caret-right"></span>医生管理</a></li>        
+    <li><a href="./getAllDoctor" target="right"><span class="icon-caret-right"></span>医生管理</a></li>        
   </ul>  
   <h2><span class="icon-pencil-square-o"></span>缴帐管理</h2>
   <ul>

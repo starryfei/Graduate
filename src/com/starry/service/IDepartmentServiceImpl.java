@@ -39,4 +39,10 @@ public class IDepartmentServiceImpl implements IDepartmentService {
 		return departmentDao.findId(info);
 	}
 
+	@Override
+	public void update(Department department) {
+		departmentDao.updateDepart(department);
+		
+	}
+
 }

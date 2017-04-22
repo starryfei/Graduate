@@ -26,13 +26,41 @@
 <script src="js/ie-emulation-modes-warning.js"></script>
 <script type="text/javascript" src="js/dropdown.js"></script>
 </head>
+<script type="text/javascript">
+        function imgPreview(fileDom) {
+            //判断是否支持FileReader
+            if (window.FileReader) {
+                var reader = new FileReader();
+            } else {
+                alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+            }
+            //获取文件
+            var file = fileDom.files[0];
+            var imageType = /^image\//;
+            //是否是图片
+            if (!imageType.test(file.type)) {
+                alert("请选择图片！");
+                return;
+            }
+            //读取完成
+            reader.onload = function (e) {
+                //获取图片dom
+                var img = document.getElementById("preview");
+                //图片路径设置为读取的图片
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+    </script>
+    
 <body>
 	<div class="panel admin-panel">
 		<div class="panel-head">
 			<strong><span class="icon-pencil-square-o"></span> 添加医生信息</strong>
 		</div>
 		<div class="body-content">
-			<form method="post" class="form-x" action="/addDoctor">
+			<form method="post" class="form-x" action="/addDoctor" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="label">
 						<label>医生工号</label>
@@ -48,10 +76,10 @@
 						<label>医生照片</label>
 					</div>
 					<div class="field">
-						<input type="text" id="url1" name="image" class="input tips"
+						<input type="file" id="url1" name="image" class="tips"
 							style="width: 25%; float: left;" value="" data-toggle="hover"
-							data-place="right" data-image="" /> <input type="button"
-							class="button bg-blue margin-left" id="image1" value="+ 浏览上传">
+							data-place="right" data-image=""onchange="imgPreview(this)" /> 
+							
 					</div>
 				</div>
 				<div class="form-group">
@@ -81,11 +109,13 @@
 						<label>所属科室：</label>
 					</div>
 					<div class="field">
-						<select name="cNumber" class="input w50">
-							<c:forEach items="${department}" var="department">
+					<c:forEach items="${department}" var="department">
+						<select name="cNumber" value="${department.cNumber}"  class="input w50">
+							
 								<option value="">${department.dName}</option>
-							</c:forEach>
+							
 						</select>
+						</c:forEach>
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 					</div>

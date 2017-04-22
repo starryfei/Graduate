@@ -16,6 +16,8 @@
 	<insert id="adDoctor" parameterType="com.starry.entity.Doctor">
 	insert ignore  into Doctor values(#{dNumber},#{dName},#{dPwd},#{dDec},#{cNumber},#{dInfo},#{dResume},#{dTel},#{dEmail},#{image})
 	</insert>
-	
+	<update id="updatePwd" parameterType="com.starry.entity.Administor">
+	update Administor set Pwd=#{Pwd} where aNumber=#{aNumber}
+	</update>
 	
 </mapper>

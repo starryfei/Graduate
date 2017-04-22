@@ -37,4 +37,9 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 	public int addDoctor(Doctor doctor) {
 		return this.getSqlSession().insert("adDoctor",doctor);
 	}
+	@Override
+	public void updatePwd(Administor administor) {
+		this.getSqlSession().update("updatePwd", administor);
+		
+	}
 }

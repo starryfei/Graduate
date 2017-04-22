@@ -20,24 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head"><strong class="icon-reorder"> 科室信息</strong></div>
-<!--   <div class="padding border-bottom">  
-  <a href="page.html"><button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加内容</button></a>
- <ul class="search" style="padding-left:10px;">
-  <select name="s_istop" id="s_istop" class="input"  style="width:100px; line-height:17px;display:inline-block">
-            <option value="1">科室编号</option>
-            <option value="2">科室名字</option>
-          </select>
-        <li>
-          <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
-          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
-      </ul>
-  </div> -->
-   <div class="padding border-bottom">
-    <!-- <button type="button" class="button border-yellow" onclick="window.location.href='#add'"><span class="icon-plus-square-o"></span> 添加分类</button> -->
+  <div class="panel-head"><strong class="icon-reorder"> 医生信息</strong></div>
    <select name="s_istop" id="s_istop"  class="input" style="width:100px; line-height:17px;display:inline-block">
-            <option value="1">科室编号</option>
-            <option value="2">科室名字</option>
+            <option value="1">科室</option>
+            <option value="2">医生姓名</option>
+            <option value="3">医生编号</option>
           </select>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>
@@ -45,21 +32,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <table class="table table-hover text-center">
     <tr>
-      <th width="10%">科室编号</th>
-      <th width="15%">名称</th>
-      <th width="20%">描述</th>
-      <th width="15%">操作</th>
+      <th width="10%">医生工号</th>
+      <th width="10%">医生名字</th>
+      <th width="10%">所属科室</th>
+      <th width="10%">联系方式</th>
+      <th width="25%">医生信息</th>
+      <th width="15%">邮箱</th>
     </tr>
-     <c:forEach items="${department}" var="department">
+     <c:forEach items="${alldoctor}" var="alldoctor">
     <tr>
-    
-       <td>${department.cNumber}</td>
-       <td>${department.dName}</td>
-       <td>${department.dDec}</td>
-      
+       <td>${alldoctor.dNumber}</td>
+       <td>${alldoctor.dName}</td>
+       <td>${alldoctor.cNumber}</td>
+       <td>${alldoctor.dInfo}</td>
+       <td>${alldoctor.dTel}</td>
+       <td>${alldoctor.dEmail}</td>
       <td><div class="button-group">
-      <a class="button border-main" href="javascript:void(0)" onclick="update(${department.cNumber})"><span class="icon-edit"></span> 修改</a>
-      <a class="button border-red" href="javascript:void(0)" onclick="del(${department.cNumber})"><span class="icon-trash-o"></span> 删除</a>
+      <a class="button border-main" href="javascript:void(0)" onclick="update(${alldoctor.cNumber})"><span class="icon-edit"></span> 修改</a>
+      <a class="button border-red" href="javascript:void(0)" onclick="del(${alldoctor.cNumber})"><span class="icon-trash-o"></span> 删除</a>
       </div></td>
     </tr>
      </c:forEach>

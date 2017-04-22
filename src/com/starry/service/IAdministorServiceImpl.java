@@ -46,4 +46,9 @@ public class IAdministorServiceImpl implements IAdministorService {
 	public int addDoctor(Doctor doctor) {
 		return administorDao.addDoctor(doctor);
 	}
+
+	@Override
+	public void updatePwd(Administor administor) {
+		administorDao.updatePwd(administor);
+	}
 }
