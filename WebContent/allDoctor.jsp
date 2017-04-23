@@ -42,14 +42,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <c:forEach items="${alldoctor}" var="alldoctor">
     <tr>
        <td>${alldoctor.dNumber}</td>
+       <td>${alldoctor.cName}</td>
        <td>${alldoctor.dName}</td>
-       <td>${alldoctor.cNumber}</td>
-       <td>${alldoctor.dInfo}</td>
        <td>${alldoctor.dTel}</td>
+       <td>${alldoctor.dInfo}</td>
        <td>${alldoctor.dEmail}</td>
       <td><div class="button-group">
-      <a class="button border-main" href="javascript:void(0)" onclick="update(${alldoctor.cNumber})"><span class="icon-edit"></span> 修改</a>
-      <a class="button border-red" href="javascript:void(0)" onclick="del(${alldoctor.cNumber})"><span class="icon-trash-o"></span> 删除</a>
+      <a class="button border-main" href="javascript:void(0)" onclick="update(${alldoctor.dNumber})"><span class="icon-edit"></span> 修改</a>
+      <a class="button border-red" href="javascript:void(0)" onclick="del(${alldoctor.dNumber})"><span class="icon-trash-o"></span> 删除</a>
       </div></td>
     </tr>
      </c:forEach>
@@ -62,13 +62,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function del(id){
 	if(confirm("您确定要删除吗?")){
 		if(id != ""){ 
-	    	window.location.href = "delByid?cNumber="+id+"";
+	    	window.location.href = "Ddelete?dNumber="+id+"";
 	    	 } 
 	}
 }
 function update(id){
 	if(id!="")
-		window.location.href = "updateByid?cNumber="+id+"";
+		window.location.href = "getById?dNumber="+id+"";
 }
 function changesearch(){
 	var chose = document.getElementById("s_istop").value;

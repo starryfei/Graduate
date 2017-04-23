@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.starry.dao.IDoctorDao">
-	<select id="getAllDoctor" resultType="com.starry.entity.Doctor">
-		select *,department.dName from Doctor,department where doctor.cNumber=department.cNumber
+	<select id="getAllDoctor" resultType="com.starry.entity.DoctorInfo">
+		<!-- select *,department.dName from Doctor,department where doctor.cNumber=department.cNumber -->
+		select dNumber,name,department.dName,dTel,dInfo,dEmail 
+		from Doctor,department 
+		where doctor.cNumber=department.cNumber
 	</select>
 
 	<delete id="deleteByNumber" parameterType="com.starry.entity.Doctor">
@@ -11,7 +14,17 @@
 	</delete>
 	<insert id="addDoctor"  parameterType="com.starry.entity.Doctor">
       insert into 
-      doctor (dNumber,dName,dPwd,cNumber,dInfo,dResume,dTel,dEmail，image) 
-      values (#{dnumber},#{dname},#{dpwd},#{cnumber},#{dinfo},#{dresume},#{dtel},#{demail},#{image})
+      doctor (dNumber,name,dPwd,cNumber,dInfo,dResume,dTel,dEmail,image) 
+      values (#{dNumber},#{name},#{dPwd},#{cNumber},#{dInfo},#{dResume},#{dTel},#{dEmail},#{image})
      </insert>
+     
+     <select id="getDoctorById" resultType="com.starry.entity.Doctor">
+     select * from doctor where dNumber =#{dNumber}
+     </select>
+     
+     <update id="updateDoctor" parameterType="com.starry.entity.Doctor">
+     update doctor 
+     set name=#{name},cNumber=#{cNumber},dInfo=#{dInfo},dResume=#{dResume},dTel=#{dTel},dEmail=#{dEmail}
+     where dNumber=#{dNumber}
+     </update>
 </mapper>

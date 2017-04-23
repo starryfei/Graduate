@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.starry.dao.IDoctorDao;
 import com.starry.entity.Doctor;
+import com.starry.entity.DoctorInfo;
 
 @Service("doctorService")
 public class IDoctorServiceImpl implements IDoctorService {
@@ -21,7 +22,7 @@ public class IDoctorServiceImpl implements IDoctorService {
 		this.doctorDao = doctorDao;
 	}
 	@Override
-	public List<Doctor> selectAll() {
+	public List<DoctorInfo> selectAll() {
 		// TODO Auto-generated method stub
 		System.out.println("IDoctorService"+doctorDao.selectAll());
 		return doctorDao.selectAll();
@@ -30,7 +31,7 @@ public class IDoctorServiceImpl implements IDoctorService {
 
 
 	@Override
-	public int deleteById(int number) {
+	public int deleteById(String number) {
 		// TODO Auto-generated method stub
 		return doctorDao.deleteById(number);
 	}
@@ -45,6 +46,11 @@ public class IDoctorServiceImpl implements IDoctorService {
 	public int update(Doctor doctor) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public List<Doctor> getById(String dNumber) {
+		// TODO Auto-generated method stub
+		return doctorDao.getById(dNumber);
 	}
 
 }

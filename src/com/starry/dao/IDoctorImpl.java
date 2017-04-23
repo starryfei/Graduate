@@ -9,6 +9,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.starry.entity.Doctor;
+import com.starry.entity.DoctorInfo;
 
 @Repository("doctorDao")
 public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
@@ -18,14 +19,14 @@ public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
 	    }
 	  
 	@Override
-	public List<Doctor> selectAll() {
-		List<Doctor> list = this.getSqlSession().selectList("getAllDoctor");
+	public List<DoctorInfo> selectAll() {
+		List<DoctorInfo> list = this.getSqlSession().selectList("getAllDoctor");
 		System.out.println("IDoctorImpl"+list);
 		return list;
 	}
 
 	@Override
-	public int deleteById(int number) {
+	public int deleteById(String number) {
 		int result=this.getSqlSession().delete("deleteByNumber",number);
 		return result;
 	}
@@ -39,7 +40,13 @@ public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
 	@Override
 	public int update(Doctor doctor) {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.getSqlSession().update("", doctor);
+	}
+
+	@Override
+	public List<Doctor> getById(String dNumber) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("getDoctorById", dNumber);
 	}
 
 }

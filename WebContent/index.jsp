@@ -40,7 +40,7 @@
   </ul>  
   <h2><span class="icon-pencil-square-o"></span>缴帐管理</h2>
   <ul>
-    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>预约管理</a></li>
+    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>查看预约名单</a></li>
     </ul>
     <h2><span class="icon-pencil-square-o"></span>其他</h2>
     <ul>

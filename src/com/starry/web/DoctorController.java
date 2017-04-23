@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.starry.entity.Doctor;
+import com.starry.entity.DoctorInfo;
 import com.starry.service.IDoctorService;
 
 @Controller
@@ -38,38 +39,46 @@ public class DoctorController {
 	}
 
 	@RequestMapping(value = "Djson", produces = "application/json")
-	public @ResponseBody List<Doctor> getJson() {
-		List<Doctor> list = doctorService.selectAll();
+	public @ResponseBody List<DoctorInfo> getJson() {
+		List<DoctorInfo> list = doctorService.selectAll();
 		System.out.println("DoctorController" + list);
 		return list;
 	}
 	@RequestMapping(value = "getAllDoctor")
 	public  String selectAll(Model model) {
-		List<Doctor> alldoctor = doctorService.selectAll();
+		List<DoctorInfo> alldoctor = doctorService.selectAll();
 		model.addAttribute("alldoctor", alldoctor);
 		return "allDoctor";
 	}
+	
+	@RequestMapping(value="getById")
+	public String getById(String dNumber,Model model){
+		List<Doctor> doctors = doctorService.getById(dNumber);
+		model.addAttribute("doctor", doctors);
+		System.out.println(doctors);
+		return "updateDoctor";
+	}
+	
+	
 //, method = RequestMethod.POST
 	@RequestMapping(value = "Ddelete")
-	public String delete(@RequestParam("number") int number) {
-		doctorService.deleteById(number);
-		return "success";
+	public String delete( String dNumber) {
+		doctorService.deleteById(dNumber);
+		return "redirect:/getAllDoctor";
 	} 
 	
 //, method = RequestMethod.POST
-	@RequestMapping(value = "addDoctor")
-	public String register(@RequestParam("file") MultipartFile file,
-			@Param("content") String content, HttpServletRequest request,
+	@RequestMapping(value = "addDoctor",method = RequestMethod.POST)
+	public String register(@RequestParam("image") MultipartFile image,
+			 HttpServletRequest request,
 			@RequestParam("dNumber") String dNumber,
-			@RequestParam("dName") String dName,
+			@RequestParam("name") String name,
 			@RequestParam("dPwd") String dPwd,
 			@RequestParam("cNumber") String cNumber,
 			@RequestParam("dInfo") String dInfo,
 			@RequestParam("dResume") String dResume,
 			@RequestParam("dTel") String dTel,
 			@RequestParam("dEmail") String dEmail,
-			@RequestParam("image") String images,
-			
 			Model model) {
 		// 获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
 		HttpSession session = request.getSession();
@@ -77,29 +86,28 @@ public class DoctorController {
 		System.out.println("getRealPath('/'):" + path);
 		int end = path.indexOf("t", 19);
 		String prePath = path.substring(0, end);
-		// String realPath = prePath+"\\WEB-INF\\images";
 		String realPath = "d:\\temp";
 		System.out.println("DEBUG:" + realPath);
 		String picName = new Date().getTime() + ".jpg";
-		if (!file.isEmpty()) {
+		if (!image.isEmpty()) {
 			try {
-				FileUtils.copyInputStreamToFile(file.getInputStream(),
+				FileUtils.copyInputStreamToFile(image.getInputStream(),
 						new File(realPath, picName));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (content == null) {
-			content = "";// 如果输入为null数据库不允许插入
-		}
-		Doctor doctor = new Doctor(dNumber, dName, dPwd, cNumber, dInfo,
+		} 
+		
+		Doctor doctor = new Doctor(dNumber, name, dPwd, cNumber, dInfo,
 				dResume, dTel, dEmail, "\\" + picName);
+		System.out.println(doctor);
 		int a = doctorService.insert(doctor);
 		System.out.println("" + a);
 		if (a == 1) {
-			return "success";
+			return "redirect:/getAllDoctor";
 		}
-		return "register";
+		return "404";
 	}
 
 

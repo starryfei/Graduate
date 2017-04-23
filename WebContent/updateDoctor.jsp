@@ -59,41 +59,43 @@
 		<div class="panel-head">
 			<strong><span class="icon-pencil-square-o"></span> 添加医生信息</strong>
 		</div>
+		<c:forEach items="${doctor}" var="doctor">
 		<div class="body-content">
-			<form method="post" class="form-x" action="addDoctor" enctype="multipart/form-data">
+		
+		
+			<form method="post" class="form-x" action="/addDoctor" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="label">
 						<label>医生工号</label>
 					</div>
 					<div class="field">
-						<input type="text" name="dNumber" style="width: 25%; float: left;" class="input"
-							 value="" />
+						<input type="text" name="dNumber" value="${doctor.dNumber }" style="width: 25%; float: left;" class="input"
+							/>
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<div class="label">
 						<label>医生照片</label>
 					</div>
 					<div class="field">
-						<input type="file" id="image" name="image" class="tips"
+						<input type="file" id="url1" name="image" class="tips"
 							style="width: 25%; float: left;" value="" data-toggle="hover"
 							data-place="right" data-image=""onchange="imgPreview(this)" /> 
 							
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<div class="label">
 						<label>医生姓名：</label>
 					</div>
 					<div class="field">
-						<input type="text" name="name"  style="width: 25%; float: left;" class="input"
-							value="" />
+						<input type="text" name="name" value="${doctor.name }"  style="width: 25%; float: left;" class="input" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 					
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<div class="label">
 						<label>初始密码：</label>
 
@@ -103,14 +105,14 @@
 							 value="" />
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<div class="label">
 						<label>所属科室：</label>
 					</div>
 					<div class="field">
 				
-						<select name="cNumber"  class="input w50">
+						<select name="cNumber" value="${doctor.cNumber }" class="input w50">
 								<c:forEach items="${department}" var="department">
 								<option value="${department.cNumber }">${department.dName}</option>
 							</c:forEach>
@@ -124,7 +126,7 @@
 							<label>医生描述：</label>
 						</div>
 						<div class="field">
-							<textarea class="input" name="dInfo" style="width: 50%; float: left value=""></textarea>
+							<textarea class="input" name="dInfo" value="${doctor.dInfo }" style="width: 50%; float: left" ></textarea>
 							<div class="tips"></div>
 						</div>
 					</div>
@@ -133,7 +135,7 @@
 							<label>职称：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="dResume"  style="width: 25%; float: left; value="" />
+							<input type="text" class="input" name="dResume" value="${doctot.dResume}"  style="width: 25%; float: left />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -142,7 +144,8 @@
 							<label>联系方式：</label>
 						</div>
 						<div class="field">
-							<input type="text" name="dTel" class="input" style="width: 25%; float: left;  value="" />
+						<!-- 	<input type="text" name="dTel"   class="input" style="width: 25%; float: left; value="${doctot.dTel}"/> -->
+									<input type="text" class="input" name="dTel" value="${doctot.dTel}"  style="width: 25%; float: left />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -151,7 +154,7 @@
 							<label>email：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="dEmail" style="width: 25%; float: left; value="" />
+							<input type="text" class="input" name="dEmail" style="width: 25%; float: left; value="${doctor.dEmail }" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -160,7 +163,9 @@
 							提交</button>
 					</div>
 				</div>
+				</c:forEach>
 			</form>
 		</div>
+		
 </body>
 </html>
