@@ -22,9 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="panel admin-panel">
   <div class="panel-head"><strong class="icon-reorder"> 医生信息</strong></div>
    <select name="s_istop" id="s_istop"  class="input" style="width:100px; line-height:17px;display:inline-block">
-            <option value="1">科室</option>
+            <option value="3">科室</option>
             <option value="2">医生姓名</option>
-            <option value="3">医生编号</option>
+            <option value="1">医生编号</option>
           </select>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>
@@ -74,7 +74,7 @@ function changesearch(){
 	var chose = document.getElementById("s_istop").value;
 	var info = document.getElementById("keywords").value;
 	/* alert(chose+"  "+info) */
-	window.location.href = "find?info="+info+"&chose="+chose+"";
+	window.location.href = "findDoctor?info="+info+"&chose="+chose+"";
 	
 }
 </script>

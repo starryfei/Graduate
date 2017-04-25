@@ -20,4 +20,8 @@
 	update Administor set Pwd=#{Pwd} where aNumber=#{aNumber}
 	</update>
 	
+	<select id="getFeedBack" resultType="com.starry.entity.Feedback">
+	select * from FeedBack
+	</select>
+	
 </mapper>

@@ -27,4 +27,19 @@
      set name=#{name},cNumber=#{cNumber},dInfo=#{dInfo},dResume=#{dResume},dTel=#{dTel},dEmail=#{dEmail}
      where dNumber=#{dNumber}
      </update>
+     <select id="getDById" resultType="com.starry.entity.DoctorInfo">
+	 	select dNumber,name,department.dName,dTel,dInfo,dEmail  
+	 	from Doctor,department 
+	 	 where dNumber=#{dNumber} and doctor.cNumber=department.cNumber
+	</select>
+	<select id="getDoctorByName" resultType="com.starry.entity.DoctorInfo">
+	select dNumber,name,department.dName,dTel,dInfo,dEmail  
+	 	from Doctor,department 
+	 	 where name LIKE CONCAT(CONCAT('%', #{name}), '%')and doctor.cNumber=department.cNumber
+	</select>
+	<select id="getDoctorBycNumber" resultType="com.starry.entity.DoctorInfo">
+	select dNumber,name,department.dName,dTel,dInfo,dEmail  
+	 	from Doctor,department 
+	 	 where doctor.cNumber=#{cNumber}and doctor.cNumber=department.cNumber
+	</select>
 </mapper>

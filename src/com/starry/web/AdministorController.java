@@ -1,5 +1,7 @@
 package com.starry.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.starry.entity.Administor;
+import com.starry.entity.Count;
 import com.starry.entity.Department;
+import com.starry.entity.Feedback;
+import com.starry.entity.OrderInfo;
 import com.starry.service.IAdministorService;
 
 @Controller
@@ -31,7 +36,7 @@ public class AdministorController {
 	@RequestMapping(value = "index")
 	public String login(@RequestParam("name") String name,
 			@RequestParam("pwd") String pwd, Model model) {
-		System.out.println(name+pwd);
+//		System.out.println(name+pwd);
 		boolean result = administorService.checkLogin(name, pwd);
 		System.out.println("login " + result);
 		if (result) {
@@ -67,5 +72,26 @@ public class AdministorController {
 		administorService.updatePwd(administor);
 		return "login";
 	}
-	
+	/**
+	 * 
+	 */
+	@RequestMapping("getAllOreder")
+	public String getAllOrder(Model model){
+		List<OrderInfo> list = administorService.getAll();
+		System.out.println(list);
+		model.addAttribute("allOrder", list);
+		return "allOreder";
+	}
+	@RequestMapping("getCount")
+	public String getCount(Model model){
+		List<Count> list = administorService.getCount();
+		model.addAttribute("Count", list);
+		return "count";
+	}
+	@RequestMapping("getFeedBack")
+	public String getFeedback(Model model){
+		List<Feedback> list = administorService.getFeedBack();
+		model.addAttribute("Feedback", list);
+		return "feedback";
+	}
 }

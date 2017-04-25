@@ -14,14 +14,17 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.service.IDepartmentService;
 import com.starry.service.IDoctorService;
 
 @Controller
@@ -29,7 +32,8 @@ import com.starry.service.IDoctorService;
 public class DoctorController {
 	@Autowired
 	private IDoctorService doctorService;
-
+	private IDepartmentService departmentService;
+	
 	public IDoctorService getDoctorService() {
 		return doctorService;
 	}
@@ -37,7 +41,14 @@ public class DoctorController {
 	public void setDoctorService(IDoctorService doctorService) {
 		this.doctorService = doctorService;
 	}
-
+	
+	public void setDepartmentService(IDepartmentService departmentService) {
+		this.departmentService = departmentService;
+	}
+	
+	public IDepartmentService getDepartmentService() {
+		return departmentService;
+	}
 	@RequestMapping(value = "Djson", produces = "application/json")
 	public @ResponseBody List<DoctorInfo> getJson() {
 		List<DoctorInfo> list = doctorService.selectAll();
@@ -55,10 +66,9 @@ public class DoctorController {
 	public String getById(String dNumber,Model model){
 		List<Doctor> doctors = doctorService.getById(dNumber);
 		model.addAttribute("doctor", doctors);
-		System.out.println(doctors);
+		System.out.println("doctor的信息"+doctors);
 		return "updateDoctor";
 	}
-	
 	
 //, method = RequestMethod.POST
 	@RequestMapping(value = "Ddelete")
@@ -109,6 +119,41 @@ public class DoctorController {
 		}
 		return "404";
 	}
-
-
+	@RequestMapping(value = "updateDoctor",method = RequestMethod.POST)
+	public String update(@RequestParam("dNumber") String dNumber,
+			@RequestParam("name") String name,
+			@RequestParam("cNumber") String cNumber,
+			@RequestParam("dInfo") String dInfo,
+			@RequestParam("dResume") String dResume,
+			@RequestParam("dTel") String dTel,
+			@RequestParam("dEmail") String dEmail) {
+		Doctor doctor = new Doctor(dNumber, name, cNumber, dInfo, dResume, dTel, dEmail);
+		System.out.println("修改的医生信息："+doctor);
+		doctorService.update(doctor);
+		return "redirect:/getAllDoctor";
+	}
+			
+	@RequestMapping(value = "findDoctor")
+	public String findDoctor(Model model, String info, String chose) {
+		// chose=1,按照科室搜索
+		// 2姓名搜索
+		System.out.println(info + chose);
+		if (chose.equals("1")) {
+			List<DoctorInfo> dInfos = doctorService.findId(info);
+			System.out.println(dInfos);
+			model.addAttribute("alldoctor", dInfos);
+			return "allDoctor";
+		}
+		if (chose.equals("2")) {
+			List<DoctorInfo> dInfos = doctorService.findName(info);
+			model.addAttribute("alldoctor", dInfos);
+			return "allDoctor";
+		}
+		if(chose.equals("3")){
+			List<DoctorInfo> dInfos = doctorService.findDepartName(info);
+			model.addAttribute("alldoctor",dInfos);
+			return "allDoctor";
+		}
+		return "404";
+	}
 }

@@ -15,4 +15,8 @@ public interface IDoctorService {
 	public abstract int update(Doctor doctor);// 
 	
 	public abstract List<Doctor> getById(String id);
+	
+	public abstract List<DoctorInfo> findName(String info);
+	public abstract List<DoctorInfo> findId(String info);
+	public abstract List<DoctorInfo> findDepartName(String info);
 }

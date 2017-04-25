@@ -44,13 +44,27 @@ public class IDoctorServiceImpl implements IDoctorService {
 
 	@Override
 	public int update(Doctor doctor) {
-		// TODO Auto-generated method stub
-		return 0;
+		return doctorDao.update(doctor);
 	}
 	@Override
 	public List<Doctor> getById(String dNumber) {
 		// TODO Auto-generated method stub
 		return doctorDao.getById(dNumber);
+	}
+	@Override
+	public List<DoctorInfo> findName(String info) {
+		// TODO Auto-generated method stub
+		return doctorDao.findName(info);
+	}
+	@Override
+	public List<DoctorInfo> findId(String info) {
+		// TODO Auto-generated method stub
+		return doctorDao.findId(info);
+	}
+	@Override
+	public List<DoctorInfo> findDepartName(String info) {
+		// TODO Auto-generated method stub
+		return doctorDao.findDepartName(info);
 	}
 
 }

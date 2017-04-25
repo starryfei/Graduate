@@ -10,8 +10,11 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.starry.entity.Administor;
+import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
+import com.starry.entity.Feedback;
+import com.starry.entity.OrderInfo;
 
 @Repository("administorDao")
 public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministorDao {
@@ -41,5 +44,20 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 	public void updatePwd(Administor administor) {
 		this.getSqlSession().update("updatePwd", administor);
 		
+	}
+	@Override
+	public List<OrderInfo> getAll() {
+		System.out.println(this.getSqlSession().selectList("getOrder"));
+		return this.getSqlSession().selectList("getOrder");
+	}
+	@Override
+	public List<Count> getCount() {
+		System.out.println(this.getSqlSession().selectList("getCount"));
+		return this.getSqlSession().selectList("getCount");
+	}
+	@Override
+	public List<Feedback> getFeedBack() {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("getFeedBack");
 	}
 }

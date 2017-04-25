@@ -94,6 +94,17 @@ public class Doctor {
 		this.dEmail = dEmail;
 		this.image = image;
 	}
+	public Doctor(String dNumber, String name, String cNumber, String dInfo,
+			String dResume, String dTel, String dEmail) {
+		super();
+		this.dNumber = dNumber;
+		this.name = name;
+		this.cNumber = cNumber;
+		this.dInfo = dInfo;
+		this.dResume = dResume;
+		this.dTel = dTel;
+		this.dEmail = dEmail;
+	}
 
 
 

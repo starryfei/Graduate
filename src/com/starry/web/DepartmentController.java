@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import com.starry.entity.Department;
 import com.starry.service.IDepartmentService;
@@ -39,6 +43,16 @@ public class DepartmentController {
 		model.addAttribute("department", departments);
 		System.out.println("Controller" + departments);
 		return "info";
+	}
+	//获取所有科室
+	@RequestMapping(value = "getName1")
+	public String getName1(String dNumber,RedirectAttributes attr,Model model) {
+		List<Department> departments = departmentService.getAll();
+//		model.addAttribute("department", departments);
+		attr.addFlashAttribute("department", departments);
+		System.out.println("Controller" + departments);
+		System.out.println("dNumber"+dNumber);
+		return "redirect:/getById？dNumber="+dNumber;
 	}
 
 	@RequestMapping(value = "delByid")

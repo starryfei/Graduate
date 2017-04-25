@@ -26,65 +26,26 @@
 <script src="js/ie-emulation-modes-warning.js"></script>
 <script type="text/javascript" src="js/dropdown.js"></script>
 </head>
-<script type="text/javascript">
-        function imgPreview(fileDom) {
-            //判断是否支持FileReader
-            if (window.FileReader) {
-                var reader = new FileReader();
-            } else {
-                alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
-            }
-            //获取文件
-            var file = fileDom.files[0];
-            var imageType = /^image\//;
-            //是否是图片
-            if (!imageType.test(file.type)) {
-                alert("请选择图片！");
-                return;
-            }
-            //读取完成
-            reader.onload = function (e) {
-                //获取图片dom
-                var img = document.getElementById("preview");
-                //图片路径设置为读取的图片
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-        
-    </script>
     
 <body>
 	<div class="panel admin-panel">
 		<div class="panel-head">
-			<strong><span class="icon-pencil-square-o"></span> 添加医生信息</strong>
+			<strong><span class="icon-pencil-square-o"></span> 修改医生信息</strong>
 		</div>
 		<c:forEach items="${doctor}" var="doctor">
 		<div class="body-content">
 		
 		
-			<form method="post" class="form-x" action="/addDoctor" enctype="multipart/form-data">
+			<form method="post" class="form-x" action="updateDoctor" >
 				<div class="form-group">
 					<div class="label">
 						<label>医生工号</label>
 					</div>
 					<div class="field">
-						<input type="text" name="dNumber" value="${doctor.dNumber }" style="width: 25%; float: left;" class="input"
-							/>
+						<input type="text" name="dNumber" readonly="readonly" value="${doctor.dNumber }" style= "width: 25%; float: left;" class="input"/>
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<div class="label">
-						<label>医生照片</label>
-					</div>
-					<div class="field">
-						<input type="file" id="url1" name="image" class="tips"
-							style="width: 25%; float: left;" value="" data-toggle="hover"
-							data-place="right" data-image=""onchange="imgPreview(this)" /> 
-							
-					</div>
-				</div> -->
 				<div class="form-group">
 					<div class="label">
 						<label>医生姓名：</label>
@@ -95,29 +56,18 @@
 					</div>
 					
 				</div>
-				<!-- <div class="form-group">
-					<div class="label">
-						<label>初始密码：</label>
-
-					</div>
-					<div class="field">
-						<input type="text" name="dPwd" style="width: 25%; float: left;" class="input"
-							 value="" />
-						<div class="tipss"><font color="red">*必填项</font></div>
-					</div>
-				</div> -->
 				<div class="form-group">
 					<div class="label">
-						<label>所属科室：</label>
+						<label>所属科室编号：</label>
 					</div>
 					<div class="field">
-				
-						<select name="cNumber" value="${doctor.cNumber }" class="input w50">
+					
+						<%-- <select name="cNumber"  class="input w50">
 								<c:forEach items="${department}" var="department">
 								<option value="${department.cNumber }">${department.dName}</option>
 							</c:forEach>
-						</select>
-						
+						</select>  --%>
+						<input type="text" class="input" name="cNumber" value="${doctor.cNumber}"  style="width: 25%; float: left" type="text"  />
 						<div class="tipss"><font color="red">*必填项</font></div>
 					</div>
 					</div>
@@ -126,7 +76,7 @@
 							<label>医生描述：</label>
 						</div>
 						<div class="field">
-							<textarea class="input" name="dInfo" value="${doctor.dInfo }" style="width: 50%; float: left" ></textarea>
+							<textarea class="input" name="dInfo" value="" style="width: 50%; float: left" >${doctor.dInfo }</textarea>
 							<div class="tips"></div>
 						</div>
 					</div>
@@ -135,7 +85,7 @@
 							<label>职称：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="dResume" value="${doctot.dResume}"  style="width: 25%; float: left />
+							<input type="text" class="input" name="dResume" value="${doctor.dResume}"  style="width: 25%; float: left" type="text"  />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -145,7 +95,7 @@
 						</div>
 						<div class="field">
 						<!-- 	<input type="text" name="dTel"   class="input" style="width: 25%; float: left; value="${doctot.dTel}"/> -->
-									<input type="text" class="input" name="dTel" value="${doctot.dTel}"  style="width: 25%; float: left />
+									<input type="text" class="input" name="dTel" value="${doctor.dTel}"  style="width: 25%; float: left;" class="input"  />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -154,7 +104,7 @@
 							<label>email：</label>
 						</div>
 						<div class="field">
-							<input type="text" class="input" name="dEmail" style="width: 25%; float: left; value="${doctor.dEmail }" />
+							<input type="text" class="input" name="dEmail"  style="width: 25%; float: left"" value="${doctor.dEmail }" />
 							<div class="tipss"><font color="red">*必填项</font></div>
 						</div>
 					</div>
@@ -166,6 +116,6 @@
 				</c:forEach>
 			</form>
 		</div>
-		
+	
 </body>
 </html>

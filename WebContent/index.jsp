@@ -18,7 +18,12 @@
   <div class="logo margin-big-left fadein-top">
     <h1><img src="images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
   </div>
-  <div class="head-l"><a class="button button-little bg-green" href="" target="_blank"><span class="icon-home"></span>${name }</a> &nbsp;&nbsp;<a href="##" class="button button-little bg-blue"><span class="icon-wrench"></span> 清除缓存</a> &nbsp;&nbsp;<a class="button button-little bg-red" href="login.html"><span class="icon-power-off"></span> 退出登录</a> </div>
+  <div class=" margin-big-right  margin-big-top" align="right" >
+  <a class="button button-little bg-green" target="_blank"><span class="icon-user"></span>用户名:${name }</a>
+   &nbsp;&nbsp;
+<!--    <a href="##" class="button button-little bg-blue"><span class="icon-wrench"></span> 清除缓存</a> -->
+    &nbsp;&nbsp;<a class="button button-little bg-red" href="login.jsp">
+    <span class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav">
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
@@ -31,7 +36,7 @@
   
   <!--   <li><a href="column.html" target="right"><span class="icon-caret-right"></span>删除科室</a></li> -->
   </ul>   
-  <h2><span class="icon-pencil-square-o"></span>医生管理</h2>
+  <h2><span class="icon-user"></span>医生管理</h2>
   <ul>
     <li><a href="./getName" target="right"><span class="icon-caret-right"></span>添加医生</a></li>
   <!--   <li><a href="list.html" target="right"><span class="icon-caret-right"></span></a></li>
@@ -40,12 +45,13 @@
   </ul>  
   <h2><span class="icon-pencil-square-o"></span>缴帐管理</h2>
   <ul>
-    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>查看预约名单</a></li>
+    <li><a href="./getAllOreder" target="right"><span class="icon-caret-right"></span>查看预约名单</a></li>
+       <li><a href="./getCount" target="right"><span class="icon-caret-right"></span>医生预约状态</a></li>
     </ul>
     <h2><span class="icon-pencil-square-o"></span>其他</h2>
     <ul>
-     <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
-    <li><a href="book.html" target="right"><span class="icon-caret-right"></span>反馈管理</a></li>
+   <!--   <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li> -->
+    <li><a href="./getFeedBack" target="right"><span class="icon-caret-right"></span>反馈管理</a></li>
       <li><a href="book.html" target="right"><span class="icon-caret-right"></span>公告管理</a></li>          
     </ul>
 </div>

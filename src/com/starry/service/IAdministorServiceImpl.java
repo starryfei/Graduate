@@ -1,5 +1,7 @@
 package com.starry.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,11 @@ import org.springframework.stereotype.Service;
 import com.starry.dao.IAdministorDao;
 import com.starry.dao.IDepartmentDao;
 import com.starry.entity.Administor;
+import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
+import com.starry.entity.Feedback;
+import com.starry.entity.OrderInfo;
 import com.starry.entity.User;
 
 @Service("administorService")
@@ -50,5 +55,23 @@ public class IAdministorServiceImpl implements IAdministorService {
 	@Override
 	public void updatePwd(Administor administor) {
 		administorDao.updatePwd(administor);
+	}
+
+	@Override
+	public List<OrderInfo> getAll() {
+		// TODO Auto-generated method stub
+		return administorDao.getAll();
+	}
+
+	@Override
+	public List<Count> getCount() {
+		// TODO Auto-generated method stub
+		return administorDao.getCount();
+	}
+
+	@Override
+	public List<Feedback> getFeedBack() {
+		// TODO Auto-generated method stub
+		return administorDao.getFeedBack();
 	}
 }

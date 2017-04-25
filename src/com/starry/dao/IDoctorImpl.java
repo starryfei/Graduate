@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
 
@@ -40,13 +41,31 @@ public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
 	@Override
 	public int update(Doctor doctor) {
 		// TODO Auto-generated method stub
-		return this.getSqlSession().update("", doctor);
+		return this.getSqlSession().update("updateDoctor", doctor);
 	}
 
 	@Override
 	public List<Doctor> getById(String dNumber) {
 		// TODO Auto-generated method stub
 		return this.getSqlSession().selectList("getDoctorById", dNumber);
+	}
+
+	@Override
+	public List<DoctorInfo> findName(String info) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("getDoctorByName", info);
+	}
+
+	@Override
+	public List<DoctorInfo> findId(String info) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("getDById", info);
+	}
+
+	@Override
+	public List<DoctorInfo> findDepartName(String info) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("getDoctorBycNumber", info);
 	}
 
 }
