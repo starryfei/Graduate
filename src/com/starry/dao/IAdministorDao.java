@@ -7,6 +7,7 @@ import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.Feedback;
+import com.starry.entity.New;
 import com.starry.entity.OrderInfo;
 
 public interface IAdministorDao {
@@ -23,4 +24,8 @@ public interface IAdministorDao {
   public abstract List<Count> getCount();
   
   public abstract List<Feedback> getFeedBack();
+  
+  public abstract int addNew(New news);
+  
+  public abstract List<New> getAllNew();
 }

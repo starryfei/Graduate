@@ -14,6 +14,7 @@ import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.Feedback;
+import com.starry.entity.New;
 import com.starry.entity.OrderInfo;
 
 @Repository("administorDao")
@@ -59,5 +60,15 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 	public List<Feedback> getFeedBack() {
 		// TODO Auto-generated method stub
 		return this.getSqlSession().selectList("getFeedBack");
+	}
+	@Override
+	public int addNew(New news) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().insert("addNew", news);
+	}
+	@Override
+	public List<New> getAllNew() {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("selectNew");
 	}
 }

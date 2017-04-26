@@ -14,6 +14,7 @@ import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.Feedback;
+import com.starry.entity.New;
 import com.starry.entity.OrderInfo;
 import com.starry.entity.User;
 
@@ -73,5 +74,17 @@ public class IAdministorServiceImpl implements IAdministorService {
 	public List<Feedback> getFeedBack() {
 		// TODO Auto-generated method stub
 		return administorDao.getFeedBack();
+	}
+
+	@Override
+	public int addNew(New news) {
+		// TODO Auto-generated method stub
+		return administorDao.addNew(news);
+	}
+
+	@Override
+	public List<New> getAllNew() {
+		// TODO Auto-generated method stub
+		return administorDao.getAllNew();
 	}
 }

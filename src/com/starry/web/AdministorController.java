@@ -1,5 +1,6 @@
 package com.starry.web;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import com.starry.entity.Administor;
 import com.starry.entity.Count;
 import com.starry.entity.Department;
 import com.starry.entity.Feedback;
+import com.starry.entity.New;
 import com.starry.entity.OrderInfo;
 import com.starry.service.IAdministorService;
 
@@ -93,5 +95,18 @@ public class AdministorController {
 		List<Feedback> list = administorService.getFeedBack();
 		model.addAttribute("Feedback", list);
 		return "feedback";
+	}
+	@RequestMapping("addNew")
+	public String addNew(@RequestParam(value="title") String title,@RequestParam(value="content") String content,@RequestParam("time") String time){
+		New news = new New( title, content, time);
+		administorService.addNew(news);
+		return "redirect:/getAllNew";
+	}
+	
+	@RequestMapping("getAllNew")
+	public String getAllNew(Model model){
+		List<New> news = administorService.getAllNew();
+		model.addAttribute("allNew", news);
+		return "welcome";
 	}
 }

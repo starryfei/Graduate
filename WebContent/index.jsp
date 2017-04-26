@@ -52,7 +52,7 @@
     <ul>
    <!--   <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li> -->
     <li><a href="./getFeedBack" target="right"><span class="icon-caret-right"></span>反馈管理</a></li>
-      <li><a href="book.html" target="right"><span class="icon-caret-right"></span>公告管理</a></li>          
+      <li><a href="new.jsp" target="right"><span class="icon-caret-right"></span>公告管理</a></li>          
     </ul>
 </div>
 <script type="text/javascript">
@@ -69,13 +69,13 @@ $(function(){
 });
 </script>
 <ul class="bread">
-  <li><a href="{:U('Index/info')}" target="right" class="icon-home"> 首页</a></li>
+  <li><a href="./getAllNew" target="right" class="icon-home"> 首页</a></li>
   <li><a href="##" id="a_leader_txt">网站信息</a></li>
   <li><b>当前语言：</b><span style="color:red;">中文</php></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换语言：<a href="##">中文</a> &nbsp;&nbsp;<a href="##">英文</a> </li>
 </ul>
 <div class="admin">
-  <iframe scrolling="auto" rameborder="0" src="welcome.html" name="right" width="100%" height="100%"></iframe>
+  <iframe scrolling="auto" rameborder="0" src="./getAllNew" name="right" width="100%" height="100%"></iframe>
 </div>
 </body>
 </html>
