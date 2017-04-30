@@ -19,11 +19,11 @@ public interface IAdministorDao {
 
   public abstract int addDoctor(Doctor doctor);
   
-  public abstract List<OrderInfo> getAll();
+  public abstract List<OrderInfo> getAll(int pageNum,int pageSize);
   
   public abstract List<Count> getCount();
   
-  public abstract List<Feedback> getFeedBack();
+  public abstract List<Feedback> getFeedBack(int pageNum,int pageSize);
   
   public abstract int addNew(New news);
   

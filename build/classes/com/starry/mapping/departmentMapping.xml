@@ -9,7 +9,7 @@
 		select * from Department where cNumber=#{cNumber}
 	</select>
 	<select id="getByName" resultType="com.starry.entity.Department">
-		select * from Department where dName LIKE CONCAT(CONCAT('%', #{dNName}), '%');
+		select * from Department where dName LIKE CONCAT(CONCAT('%', #{dName}), '%')
 	
 	</select>
 	<delete id="delById" parameterType="com.starry.entity.Department">

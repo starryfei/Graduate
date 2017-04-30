@@ -39,7 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <th width="25%">医生信息</th>
       <th width="15%">邮箱</th>
     </tr>
-     <c:forEach items="${alldoctor}" var="alldoctor">
+ 
+     <c:forEach items="${PageInfo.list}" var="alldoctor">
     <tr>
        <td>${alldoctor.dNumber}</td>
        <td>${alldoctor.cName}</td>
@@ -52,11 +53,104 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a class="button border-red" href="javascript:void(0)" onclick="del(${alldoctor.dNumber})"><span class="icon-trash-o"></span> 删除</a>
       </div></td>
     </tr>
-     </c:forEach>
+     </c:forEach> 
      <tr>
-        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+        <td colspan="8"><div class="pagelist"> <a href="./getAllDoctor?pageNum=${PageInfo.prePage}&pageSize=${PageInfo.pageSize}">上一页</a> 
+         <c:forEach items="${PageInfo.navigatepageNums}" var="nav">
+                        <c:if test="${nav == PageInfo.pageNum}">
+                          <span class="current">${nav}</span>
+                        </c:if>
+                        <c:if test="${nav != PageInfo.pageNum}">
+                            <a href="./getAllDoctor?pageNum=${nav}&pageSize=${PageInfo.pageSize}">${nav}</a>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${PageInfo.hasNextPage}">
+        <a href="./getAllDoctor?pageNum=${PageInfo.lastPage}&pageSize=${PageInfo.pageSize}">下一页</a>
+        </c:if>
       </tr>
   </table>
+  <%--  <table class="gridtable" style="width:100%;text-align: center;">
+                <tr>
+                    <c:if test="${PageInfo.hasPreviousPage}">
+                        <td><a href="./getAllDoctor?pageNum=${PageInfo.prePage}&pageSize=${PageInfo.pageSize}">前一页</a></td>
+                    </c:if>
+                    <c:forEach items="${PageInfo.navigatepageNums}" var="nav">
+                        <c:if test="${nav == PageInfo.pageNum}">
+                            <td style="font-weight: bold;">${nav}</td>
+                        </c:if>
+                        <c:if test="${nav != PageInfo.pageNum}">
+                            <td><a href="./getAllDoctor?pageNum=${nav}&pageSize=${PageInfo.pageSize}">${nav}</a></td>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${PageInfo.hasNextPage}">
+                        <td><a href="./getAllDoctor?pageNum=${PageInfo.nextPage}&pageSize=${PageInfo.pageSize}">下一页</a></td>
+                    </c:if>
+                </tr>
+            </table>
+             --%>
+          <%--   <c:if test="${PageInfo!=null}">
+            <table class="gridtable" style="width:100%;">
+                <tr>
+                    <th colspan="2">分页信息</th>
+                </tr>
+                <tr>
+                    <th style="width: 300px;">当前页号</th>
+                    <td>${PageInfo.pageNum}</td>
+                </tr>
+                <tr>
+                    <th>页面大小</th>
+                    <td>${PageInfo.pageSize}</td>
+                </tr>
+                <tr>
+                    <th>起始行号(>=)</th>
+                    <td>${PageInfo.startRow}</td>
+                </tr>
+                <tr>
+                    <th>终止行号(<=)</th>
+                    <td>${PageInfo.endRow}</td>
+                </tr>
+                <tr>
+                    <th>总结果数</th>
+                    <td>${PageInfo.total}</td>
+                </tr>
+                <tr>
+                    <th>总页数</th>
+                    <td>${PageInfo.pages}</td>
+                </tr>
+                <tr>
+                    <th>第一页</th>
+                    <td>${PageInfo.firstPage}</td>
+                </tr>
+                <tr>
+                    <th>前一页</th>
+                    <td>${PageInfo.prePage}</td>
+                </tr>
+                <tr>
+                    <th>下一页</th>
+                    <td>${PageInfo.nextPage}</td>
+                </tr>
+                <tr>
+                    <th>最后一页</th>
+                    <td>${PageInfo.lastPage}</td>
+                </tr>
+                <tr>
+                    <th>是否为第一页</th>
+                    <td>${PageInfo.isFirstPage}</td>
+                </tr>
+                <tr>
+                    <th>是否为最后一页</th>
+                    <td>${PageInfo.isLastPage}</td>
+                </tr>
+                <tr>
+                    <th>是否有前一页</th>
+                    <td>${PageInfo.hasPreviousPage}</td>
+                </tr>
+                <tr>
+                    <th>是否有下一页</th>
+                    <td>${PageInfo.hasNextPage}</td>
+                </tr>
+            </table>
+         </c:if> --%>
 </div>
 <script type="text/javascript">
 function del(id){
@@ -74,7 +168,7 @@ function changesearch(){
 	var chose = document.getElementById("s_istop").value;
 	var info = document.getElementById("keywords").value;
 	/* alert(chose+"  "+info) */
-	window.location.href = "findDoctor?info="+info+"&chose="+chose+"";
+	window.location.href = "findDoctor?info="+info+"&chose="+chose+"&pageNum="+${PageInfo.pageNum}+"&pageSize="+${PageInfo.pageSize};
 	
 }
 </script>

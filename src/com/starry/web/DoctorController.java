@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.pagehelper.PageInfo;
 import com.starry.entity.Department;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
@@ -49,16 +50,18 @@ public class DoctorController {
 	public IDepartmentService getDepartmentService() {
 		return departmentService;
 	}
-	@RequestMapping(value = "Djson", produces = "application/json")
+	/*@RequestMapping(value = "Djson", produces = "application/json")
 	public @ResponseBody List<DoctorInfo> getJson() {
 		List<DoctorInfo> list = doctorService.selectAll();
 		System.out.println("DoctorController" + list);
 		return list;
-	}
+	}*/
 	@RequestMapping(value = "getAllDoctor")
-	public  String selectAll(Model model) {
-		List<DoctorInfo> alldoctor = doctorService.selectAll();
-		model.addAttribute("alldoctor", alldoctor);
+	public  String selectAll(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model) {
+		List<DoctorInfo> alldoctor = doctorService.selectAll(pageNum,pageSize);
+		PageInfo<DoctorInfo> list = new PageInfo<DoctorInfo>(alldoctor);
+		model.addAttribute("PageInfo",list);
+		System.out.println("分页显示"+list);
 		return "allDoctor";
 	}
 	
@@ -74,7 +77,7 @@ public class DoctorController {
 	@RequestMapping(value = "Ddelete")
 	public String delete( String dNumber) {
 		doctorService.deleteById(dNumber);
-		return "redirect:/getAllDoctor";
+		return "redirect:/getAllDoctor?pageNum=1&pageSize=2";
 	} 
 	
 //, method = RequestMethod.POST
@@ -115,7 +118,7 @@ public class DoctorController {
 		int a = doctorService.insert(doctor);
 		System.out.println("" + a);
 		if (a == 1) {
-			return "redirect:/getAllDoctor";
+			return "redirect:/getAllDoctor?pageNum=1&pageSize=2";
 		}
 		return "404";
 	}
@@ -134,24 +137,26 @@ public class DoctorController {
 	}
 			
 	@RequestMapping(value = "findDoctor")
-	public String findDoctor(Model model, String info, String chose) {
+	public String findDoctor(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model, String info, String chose) {
 		// chose=1,按照科室搜索
 		// 2姓名搜索
 		System.out.println(info + chose);
 		if (chose.equals("1")) {
-			List<DoctorInfo> dInfos = doctorService.findId(info);
-			System.out.println(dInfos);
-			model.addAttribute("alldoctor", dInfos);
+			List<DoctorInfo> dInfos = doctorService.findId(info,pageNum,pageSize);
+			PageInfo<DoctorInfo> list = new PageInfo<DoctorInfo>(dInfos);
+			model.addAttribute("PageInfo",list);
 			return "allDoctor";
 		}
 		if (chose.equals("2")) {
-			List<DoctorInfo> dInfos = doctorService.findName(info);
-			model.addAttribute("alldoctor", dInfos);
+			List<DoctorInfo> dInfos = doctorService.findName(info,pageNum,pageSize);
+			PageInfo<DoctorInfo> list = new PageInfo<DoctorInfo>(dInfos);
+			model.addAttribute("PageInfo",list);
 			return "allDoctor";
 		}
 		if(chose.equals("3")){
-			List<DoctorInfo> dInfos = doctorService.findDepartName(info);
-			model.addAttribute("alldoctor",dInfos);
+			List<DoctorInfo> dInfos = doctorService.findDepartName(info,pageNum,pageSize);
+			PageInfo<DoctorInfo> list = new PageInfo<DoctorInfo>(dInfos);
+			model.addAttribute("PageInfo",list);
 			return "allDoctor";
 		}
 		return "404";

@@ -59,9 +59,9 @@ public class IAdministorServiceImpl implements IAdministorService {
 	}
 
 	@Override
-	public List<OrderInfo> getAll() {
+	public List<OrderInfo> getAll(int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return administorDao.getAll();
+		return administorDao.getAll(pageNum,pageSize);
 	}
 
 	@Override
@@ -71,9 +71,9 @@ public class IAdministorServiceImpl implements IAdministorService {
 	}
 
 	@Override
-	public List<Feedback> getFeedBack() {
+	public List<Feedback> getFeedBack(int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return administorDao.getFeedBack();
+		return administorDao.getFeedBack(pageNum,pageSize);
 	}
 
 	@Override

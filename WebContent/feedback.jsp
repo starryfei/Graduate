@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <th width="50%">反馈内容</th>
       
     </tr>
-     <c:forEach items="${Feedback}" var="Feedback">
+     <c:forEach items="${PageInfo.list}" var="Feedback">
      <form>
      </form>
     <tr>
@@ -49,7 +49,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
      </c:forEach>
      <tr>
-        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+        <td colspan="8"><div class="pagelist"> <a href="./getFeedBack?pageNum=${PageInfo.prePage}&pageSize=${PageInfo.pageSize}">上一页</a> 
+         <c:forEach items="${PageInfo.navigatepageNums}" var="nav">
+                        <c:if test="${nav == PageInfo.pageNum}">
+                          <span class="current">${nav}</span>
+                        </c:if>
+                        <c:if test="${nav != PageInfo.pageNum}">
+                            <a href="./getFeedBack?pageNum=${nav}&pageSize=${PageInfo.pageSize}">${nav}</a>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${PageInfo.hasNextPage}">
+        <a href="./getFeedBack?pageNum=${PageInfo.lastPage}&pageSize=${PageInfo.pageSize}">下一页</a>
+        </c:if>
       </tr>
   </table>
 </div>

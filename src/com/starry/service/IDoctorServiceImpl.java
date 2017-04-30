@@ -22,10 +22,10 @@ public class IDoctorServiceImpl implements IDoctorService {
 		this.doctorDao = doctorDao;
 	}
 	@Override
-	public List<DoctorInfo> selectAll() {
+	public List<DoctorInfo> selectAll(int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		System.out.println("IDoctorService"+doctorDao.selectAll());
-		return doctorDao.selectAll();
+		System.out.println("IDoctorService"+doctorDao.selectAll(pageNum,pageSize));
+		return doctorDao.selectAll(pageNum,pageSize);
 	}
 
 
@@ -52,19 +52,19 @@ public class IDoctorServiceImpl implements IDoctorService {
 		return doctorDao.getById(dNumber);
 	}
 	@Override
-	public List<DoctorInfo> findName(String info) {
+	public List<DoctorInfo> findName(String info,int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return doctorDao.findName(info);
+		return doctorDao.findName(info, pageNum, pageSize);
 	}
 	@Override
-	public List<DoctorInfo> findId(String info) {
+	public List<DoctorInfo> findId(String info,int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return doctorDao.findId(info);
+		return doctorDao.findId(info,pageNum,pageSize);
 	}
 	@Override
-	public List<DoctorInfo> findDepartName(String info) {
+	public List<DoctorInfo> findDepartName(String info,int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return doctorDao.findDepartName(info);
+		return doctorDao.findDepartName(info,pageNum,pageSize);
 	}
 
 }

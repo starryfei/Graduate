@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageInfo;
 import com.starry.entity.Administor;
 import com.starry.entity.Count;
 import com.starry.entity.Department;
@@ -55,7 +56,7 @@ public class AdministorController {
 		System.out.println(department);
 		int result = administorService.addDepart(department);
 		System.out.println(result);
-		return "redirect:/getDepart";
+		return "redirect:/getDepart?pageNum=1&pageSize=2";
 	}
 	/*@RequestMapping(value="addDoctor", method = RequestMethod.POST)
 	public String adDoctor(@RequestParam(value="cNumber") String cNumber,@RequestParam(value="dName") String dName,@RequestParam(value="dDec") String dDec){
@@ -78,10 +79,10 @@ public class AdministorController {
 	 * 
 	 */
 	@RequestMapping("getAllOreder")
-	public String getAllOrder(Model model){
-		List<OrderInfo> list = administorService.getAll();
-		System.out.println(list);
-		model.addAttribute("allOrder", list);
+	public String getAllOrder(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model){
+		List<OrderInfo> orderinfo = administorService.getAll(pageNum,pageSize);
+		PageInfo<OrderInfo> list = new PageInfo<OrderInfo>(orderinfo);
+		model.addAttribute("PageInfo",list);
 		return "allOreder";
 	}
 	@RequestMapping("getCount")
@@ -91,9 +92,10 @@ public class AdministorController {
 		return "count";
 	}
 	@RequestMapping("getFeedBack")
-	public String getFeedback(Model model){
-		List<Feedback> list = administorService.getFeedBack();
-		model.addAttribute("Feedback", list);
+	public String getFeedback(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model){
+		List<Feedback> feddback = administorService.getFeedBack(pageNum,pageSize);
+		PageInfo<Feedback> list = new PageInfo<Feedback>(feddback);
+		model.addAttribute("PageInfo",list);
 		return "feedback";
 	}
 	@RequestMapping("addNew")

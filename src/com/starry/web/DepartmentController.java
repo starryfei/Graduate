@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
+import com.github.pagehelper.PageInfo;
 import com.starry.entity.Department;
+import com.starry.entity.DoctorInfo;
 import com.starry.service.IDepartmentService;
 
 @Controller
@@ -30,10 +32,10 @@ public class DepartmentController {
 	}
 
 	@RequestMapping(value = "getDepart")
-	public String getAll(Model model) {
-		List<Department> departments = departmentService.getAll();
-		model.addAttribute("department", departments);
-		System.out.println("Controller" + departments);
+	public String getAll(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model) {
+		List<Department> departments = departmentService.getAll(pageNum,pageSize);
+		PageInfo<Department> list = new PageInfo<Department>(departments);
+		model.addAttribute("PageInfo",list);
 		return "adv";
 	}
 
@@ -45,37 +47,38 @@ public class DepartmentController {
 		return "info";
 	}
 	//获取所有科室
-	@RequestMapping(value = "getName1")
-	public String getName1(String dNumber,RedirectAttributes attr,Model model) {
-		List<Department> departments = departmentService.getAll();
-//		model.addAttribute("department", departments);
-		attr.addFlashAttribute("department", departments);
-		System.out.println("Controller" + departments);
-		System.out.println("dNumber"+dNumber);
-		return "redirect:/getById？dNumber="+dNumber;
-	}
+//	@RequestMapping(value = "getName1")
+//	public String getName1(String dNumber,RedirectAttributes attr,Model model) {
+//		List<Department> departments = departmentService.getAll();
+////		model.addAttribute("department", departments);
+//		attr.addFlashAttribute("department", departments);
+//		System.out.println("Controller" + departments);
+//		System.out.println("dNumber"+dNumber);
+//		return "redirect:/getById？dNumber="+dNumber;
+//	}
 
 	@RequestMapping(value = "delByid")
 	public String delById(String cNumber) {
 		System.out.println(cNumber);
 		departmentService.delById(cNumber);
-		return "redirect:/getDepart";
+		return "redirect:/getDepart?pageNum=1&pageSize=2";
 	}
 
 	@RequestMapping(value = "find")
-	public String findName(Model model, String info, String chose) {
+	public String findName(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model, String info, String chose) {
 		// chose=1,按照科室搜索
 		// 2姓名搜索
 		System.out.println(info + chose);
 		if (chose.equals("1")) {
-			List<Department> departments = departmentService.findId(info);
-			System.out.println(departments);
-			model.addAttribute("department", departments);
+			List<Department> departments = departmentService.findId(info,pageNum,pageSize);
+			PageInfo<Department> list = new PageInfo<Department>(departments);
+			model.addAttribute("PageInfo",list);
 			return "adv";
 		}
 		if (chose.equals("2")) {
-			List<Department> department = departmentService.findName(info);
-			model.addAttribute("department", department);
+			List<Department> department = departmentService.findName(info,pageNum,pageSize);
+			PageInfo<Department> list = new PageInfo<Department>(department);
+			model.addAttribute("PageInfo",list);
 			return "adv";
 		}
 		return "404";
@@ -94,6 +97,6 @@ public class DepartmentController {
 			@RequestParam("dDec") String dDec) {
 		Department department = new Department(cNumber, dName, dDec);
 		departmentService.update(department);
-		return "redirect:/getDepart";
+		return "redirect:/getDepart?pageNum=1&pageSize=2";
 	}
 }

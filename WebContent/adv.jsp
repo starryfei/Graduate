@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <th width="20%">描述</th>
       <th width="15%">操作</th>
     </tr>
-     <c:forEach items="${department}" var="department">
+     <c:forEach items="${PageInfo.list}" var="department">
     <tr>
     
        <td>${department.cNumber}</td>
@@ -63,8 +63,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div></td>
     </tr>
      </c:forEach>
-     <tr>
-        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+         <tr>
+        <td colspan="8"><div class="pagelist"> <a href="./getDepart?pageNum=${PageInfo.prePage}&pageSize=${PageInfo.pageSize}">上一页</a> 
+         <c:forEach items="${PageInfo.navigatepageNums}" var="nav">
+                        <c:if test="${nav == PageInfo.pageNum}">
+                          <span class="current">${nav}</span>
+                        </c:if>
+                        <c:if test="${nav != PageInfo.pageNum}">
+                            <a href="./getDepart?pageNum=${nav}&pageSize=${PageInfo.pageSize}">${nav}</a>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${PageInfo.hasNextPage}">
+        <a href="./getDepart?pageNum=${PageInfo.lastPage}&pageSize=${PageInfo.pageSize}">下一页</a>
+        </c:if>
       </tr>
   </table>
 </div>
@@ -84,7 +95,7 @@ function changesearch(){
 	var chose = document.getElementById("s_istop").value;
 	var info = document.getElementById("keywords").value;
 	/* alert(chose+"  "+info) */
-	window.location.href = "find?info="+info+"&chose="+chose+"";
+	window.location.href = "find?info="+info+"&chose="+chose+"&pageNum="+${PageInfo.pageNum}+"&pageSize="+${PageInfo.pageSize};
 	
 }
 </script>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.github.pagehelper.PageHelper;
 import com.starry.entity.Administor;
 import com.starry.entity.Count;
 import com.starry.entity.Department;
@@ -47,8 +48,8 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 		
 	}
 	@Override
-	public List<OrderInfo> getAll() {
-		System.out.println(this.getSqlSession().selectList("getOrder"));
+	public List<OrderInfo> getAll(int pageNum,int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
 		return this.getSqlSession().selectList("getOrder");
 	}
 	@Override
@@ -57,8 +58,8 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 		return this.getSqlSession().selectList("getCount");
 	}
 	@Override
-	public List<Feedback> getFeedBack() {
-		// TODO Auto-generated method stub
+	public List<Feedback> getFeedBack(int pageNum,int pageSize) {
+		 PageHelper.startPage(pageNum,pageSize);
 		return this.getSqlSession().selectList("getFeedBack");
 	}
 	@Override

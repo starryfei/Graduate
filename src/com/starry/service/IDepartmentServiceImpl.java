@@ -20,8 +20,9 @@ public class IDepartmentServiceImpl implements IDepartmentService {
 		return departmentDao;
 	}
 	@Override
-	public List<Department> getAll() {
-		return departmentDao.getAll();
+	public List<Department> getAll(int pageNum,int pageSize) {
+
+		return departmentDao.getAll(pageNum,pageSize);
 	}
 
 	@Override
@@ -30,19 +31,31 @@ public class IDepartmentServiceImpl implements IDepartmentService {
 	}
 
 	@Override
-	public List<Department> findName(String info) {
-		return departmentDao.findName(info);
+	public List<Department> findName(String info,int pageNum,int pageSiz) {
+		return departmentDao.findName(info,pageNum,pageSiz);
 	}
 
 	@Override
-	public List<Department> findId(String info) {
-		return departmentDao.findId(info);
+	public List<Department> findId(String info,int pageNum,int pageSize) {
+		return departmentDao.findId(info,pageNum,pageSize);
 	}
 
 	@Override
 	public void update(Department department) {
 		departmentDao.updateDepart(department);
 		
+	}
+
+	@Override
+	public List<Department> getAll() {
+		// TODO Auto-generated method stub
+		return departmentDao.getAll();
+	}
+
+	@Override
+	public List<Department> findId(String info) {
+		// TODO Auto-generated method stub
+		return departmentDao.findId(info);
 	}
 
 }

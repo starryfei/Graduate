@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 function test(){
 	var sta= document.getElementById("s").value;
@@ -19,11 +20,68 @@ function test(){
 </script>
 </head>
 <body>
-success
-welcom:  ${name} and ${pwd }<br>${status}
-<form method="post" action="doUpload" enctype="multipart/form-data">  
-<input type="file" name="file"/>  
-<input type="hidden" value="${status}" name="s" id="s" >
-<button type="submit" onclick="test()">提交</button>
+  <c:if test="${PageInfo!=null}">
+            <table class="gridtable" style="width:100%;">
+                <tr>
+                    <th colspan="2">分页信息</th>
+                </tr>
+                <tr>
+                    <th style="width: 300px;">当前页号</th>
+                    <td>${PageInfo.pageNum}</td>
+                </tr>
+                <tr>
+                    <th>页面大小</th>
+                    <td>${PageInfo.pageSize}</td>
+                </tr>
+                <tr>
+                    <th>起始行号(>=)</th>
+                    <td>${PageInfo.startRow}</td>
+                </tr>
+                <tr>
+                    <th>终止行号(<=)</th>
+                    <td>${PageInfo.endRow}</td>
+                </tr>
+                <tr>
+                    <th>总结果数</th>
+                    <td>${PageInfo.total}</td>
+                </tr>
+                <tr>
+                    <th>总页数</th>
+                    <td>${PageInfo.pages}</td>
+                </tr>
+                <tr>
+                    <th>第一页</th>
+                    <td>${PageInfo.firstPage}</td>
+                </tr>
+                <tr>
+                    <th>前一页</th>
+                    <td>${PageInfo.prePage}</td>
+                </tr>
+                <tr>
+                    <th>下一页</th>
+                    <td>${PageInfo.nextPage}</td>
+                </tr>
+                <tr>
+                    <th>最后一页</th>
+                    <td>${PageInfo.lastPage}</td>
+                </tr>
+                <tr>
+                    <th>是否为第一页</th>
+                    <td>${PageInfo.isFirstPage}</td>
+                </tr>
+                <tr>
+                    <th>是否为最后一页</th>
+                    <td>${PageInfo.isLastPage}</td>
+                </tr>
+                <tr>
+                    <th>是否有前一页</th>
+                    <td>${PageInfo.hasPreviousPage}</td>
+                </tr>
+                <tr>
+                    <th>是否有下一页</th>
+                    <td>${PageInfo.hasNextPage}</td>
+                </tr>
+            </table>
+         </c:if>
 </body>
 </html>
