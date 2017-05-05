@@ -7,8 +7,13 @@
 		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber order by uorder.oTime desc
 	</select>
 	<select id="getCount" resultType="com.starry.entity.Count">
-		select doctor.dNumber, doctor.name,sum(uorder.price),count(uorder.price)
+		<!-- select doctor.dNumber, doctor.name,sum(uorder.price),count(uorder.price)
 		from uorder,sche,user,doctor 
 		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber order by doctor.dNumber
+		 -->
+		
+		select doctor.dNumber, doctor.name,SUM(uorder.price),COUNT(user.id)
+		from uorder,sche,user,doctor 
+		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber GROUP BY doctor.dNumber
 	</select>
 </mapper>

@@ -7,8 +7,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.starry.dao.IDoctorDao;
+import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.OrderInfo;
+import com.starry.entity.Sch;
 
 @Service("doctorService")
 public class IDoctorServiceImpl implements IDoctorService {
@@ -65,6 +68,31 @@ public class IDoctorServiceImpl implements IDoctorService {
 	public List<DoctorInfo> findDepartName(String info,int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
 		return doctorDao.findDepartName(info,pageNum,pageSize);
+	}
+	@Override
+	public boolean checklogin(String dNumber, String pwd) {
+		Doctor doctor = new Doctor(dNumber, pwd);
+		return doctorDao.login(doctor);
+	}
+	@Override
+	public int insertSch(Sch sch) {
+		// TODO Auto-generated method stub
+		return doctorDao.insertSch(sch);
+	}
+	@Override
+	public List<DepartmentInfo> getD(String dNumber) {
+		// TODO Auto-generated method stub
+		return doctorDao.getD(dNumber);
+	}
+	@Override
+	public List<Sch> getSInfo(String sNumber) {
+		// TODO Auto-generated method stub
+		return doctorDao.getSInfo(sNumber);
+	}
+	@Override
+	public List<OrderInfo> getOrderByDoctor(String sNumber,int pageNum,int pageSize) {
+		// TODO Auto-generated method stub
+		return doctorDao.getOrderByDoctor(sNumber,pageNum,pageSize);
 	}
 
 }

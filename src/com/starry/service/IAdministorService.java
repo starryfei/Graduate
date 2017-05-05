@@ -22,11 +22,11 @@ public interface IAdministorService {
    
    public abstract List<OrderInfo> getAll(int pageNum,int pageSize);
    
-   public abstract List<Count> getCount();
+   public abstract List<Count> getCount(int pageNum,int pageSize);
    
    public abstract List<Feedback> getFeedBack(int pageNum,int pageSize);
    
    public abstract int addNew(New news);
    
-   public abstract List<New> getAllNew();
+   public abstract List<New> getAllNew(int pageNum,int pageSize);
 }

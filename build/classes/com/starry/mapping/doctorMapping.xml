@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.starry.dao.IDoctorDao">
+
+<select id="doctorlogin" resultType="com.starry.entity.Doctor">
+		select * from doctor
+		where
+		dNumber=#{dNumber} and dPwd=#{dPwd}
+	</select>
+
 	<select id="getAllDoctor" resultType="com.starry.entity.DoctorInfo">
 		<!-- select *,department.dName from Doctor,department where doctor.cNumber=department.cNumber -->
 		select dNumber,name,department.dName,dTel,dInfo,dEmail 
@@ -41,5 +48,11 @@
 	select dNumber,name,department.dName,dTel,dInfo,dEmail  
 	 	from Doctor,department 
 	 	 where doctor.cNumber=#{cNumber}and doctor.cNumber=department.cNumber
+	</select>
+	
+	<select id="getOrderbyDoctor" resultType="com.starry.entity.OrderInfo">
+		select uorder.oNumber,user.uname,doctor.name,uorder.price ,uorder.oTime,uorder.status
+		from uorder,sche,user,doctor 
+		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber and doctor.dNumber=#{dNumber} order by uorder.oTime desc
 	</select>
 </mapper>

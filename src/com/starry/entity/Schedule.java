@@ -22,9 +22,9 @@ public class Schedule {
 	public void setsNumber(int sNumber) {
 		this.sNumber = sNumber;
 	}
-	public String getdNumber() {
-		return dNumber;
-	}
+		public String getdNumber() {
+			return dNumber;
+		}
 	public void setdNumber(String dNumber) {
 		this.dNumber = dNumber;
 	}

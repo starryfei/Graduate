@@ -105,6 +105,11 @@ public class Doctor {
 		this.dTel = dTel;
 		this.dEmail = dEmail;
 	}
+	public Doctor(String dNumber, String dPwd) {
+		super();
+		this.dNumber = dNumber;
+		this.dPwd = dPwd;
+	}
 
 
 

@@ -20,6 +20,7 @@ import com.starry.entity.Feedback;
 import com.starry.entity.New;
 import com.starry.entity.OrderInfo;
 import com.starry.service.IAdministorService;
+import com.starry.service.IDoctorService;
 
 @Controller
 @RequestMapping("/")
@@ -27,7 +28,7 @@ public class AdministorController {
 	@Autowired
 	
 	private IAdministorService administorService;
-
+	private IDoctorService doctorService;
 	public IAdministorService getAdministorService() {
 		return administorService;
 	}
@@ -35,17 +36,33 @@ public class AdministorController {
 	public void setAdministorService(IAdministorService administorService) {
 		this.administorService = administorService;
 	}
+	@Resource
+	public void setDoctorService(IDoctorService doctorService) {
+		this.doctorService = doctorService;
+	}
+	public IDoctorService getDoctorService() {
+		return doctorService;
+	}
 //method = RequestMethod.POST)
 	@RequestMapping(value = "index")
 	public String login(@RequestParam("name") String name,
-			@RequestParam("pwd") String pwd, Model model) {
-//		System.out.println(name+pwd);
-		boolean result = administorService.checkLogin(name, pwd);
-		System.out.println("login " + result);
-		if (result) {
-			model.addAttribute("name", name);
-			model.addAttribute("pwd", pwd);
-			return "index";
+			@RequestParam("pwd") String pwd,@RequestParam("status") String status, Model model) {
+		System.out.println(name+pwd);
+		if(status.equals("1")){
+			boolean result = administorService.checkLogin(name, pwd);
+			if (result) {
+				model.addAttribute("name", name);
+				model.addAttribute("pwd", pwd);
+				return "index";
+			}
+		}
+		if(status.equals("2")){
+			boolean result = doctorService.checklogin(name, pwd);
+			if (result) {
+				model.addAttribute("name", name);
+				model.addAttribute("pwd", pwd);
+				return "dindex";
+			}
 		}
 		return "login";
 	}
@@ -86,9 +103,10 @@ public class AdministorController {
 		return "allOreder";
 	}
 	@RequestMapping("getCount")
-	public String getCount(Model model){
-		List<Count> list = administorService.getCount();
-		model.addAttribute("Count", list);
+	public String getCount(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model){
+		List<Count> count = administorService.getCount(pageNum,pageSize);
+		PageInfo<Count> list = new PageInfo<Count>(count);
+		model.addAttribute("PageInfo",list);
 		return "count";
 	}
 	@RequestMapping("getFeedBack")
@@ -102,13 +120,14 @@ public class AdministorController {
 	public String addNew(@RequestParam(value="title") String title,@RequestParam(value="content") String content,@RequestParam("time") String time){
 		New news = new New( title, content, time);
 		administorService.addNew(news);
-		return "redirect:/getAllNew";
+		return "redirect:/getAllNew?pageNum=1&pageSize=3";
 	}
 	
 	@RequestMapping("getAllNew")
-	public String getAllNew(Model model){
-		List<New> news = administorService.getAllNew();
-		model.addAttribute("allNew", news);
+	public String getAllNew(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model){
+		List<New> news = administorService.getAllNew(pageNum,pageSize);
+		PageInfo<New> list = new PageInfo<New>(news);
+		model.addAttribute("PageInfo",list);
 		return "welcome";
 	}
 }

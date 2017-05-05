@@ -44,7 +44,7 @@
       <div class="row">
 	
         <div class="col-sm-8 blog-main">
-		<c:forEach items="${allNew}" var="allNew">
+		<c:forEach items="${PageInfo.list}" var="allNew">
           <div class="blog-post">
             <h3 >${allNew.title }</h3>
             <p>&nbsp;&nbsp;${allNew.content }</p>
@@ -53,9 +53,12 @@
 </div>
 </c:forEach>
           <nav>
+           <%-- <c:forEach items="${PageInfo.navigatepageNums}" var="nav"> --%>
             <ul class="pager">
-              <li><a href="#">上一页</a></li>
-              <li><a href="#">下一页</a></li>
+            
+              <li><a href="./getAllNew?pageNum=${PageInfo.prePage}&pageSize=${PageInfo.pageSize}">上一页</a></li>
+              <li><a href="./getAllNew?pageNum=${PageInfo.lastPage}&pageSize=${PageInfo.pageSize}">下一页</a></li>
+         
             </ul>
           </nav>
 

@@ -53,8 +53,8 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 		return this.getSqlSession().selectList("getOrder");
 	}
 	@Override
-	public List<Count> getCount() {
-		System.out.println(this.getSqlSession().selectList("getCount"));
+	public List<Count> getCount(int pageNum,int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
 		return this.getSqlSession().selectList("getCount");
 	}
 	@Override
@@ -68,8 +68,8 @@ public class IAdministorImpl extends SqlSessionDaoSupport implements IAdministor
 		return this.getSqlSession().insert("addNew", news);
 	}
 	@Override
-	public List<New> getAllNew() {
-		// TODO Auto-generated method stub
+	public List<New> getAllNew(int pageNum,int pageSize) {
+		PageHelper.startPage(pageNum,pageSize);
 		return this.getSqlSession().selectList("selectNew");
 	}
 }

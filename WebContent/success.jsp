@@ -1,87 +1,84 @@
-<%@page import="org.springframework.expression.spel.ast.FunctionReference"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript">
-function test(){
-	var sta= document.getElementById("s").value;
-	alert(sta);
-	if(sta =="success"){
-		alert("上传成功");
-	}else
-		alert("上传失败");
-	
-}
-</script>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="css/pintuer.css">
+<link rel="stylesheet" href="css/admin.css">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+ <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<script src="js/jquery.js"></script>
+<script src="js/pintuer.js"></script>
 </head>
 <body>
-  <c:if test="${PageInfo!=null}">
-            <table class="gridtable" style="width:100%;">
-                <tr>
-                    <th colspan="2">分页信息</th>
-                </tr>
-                <tr>
-                    <th style="width: 300px;">当前页号</th>
-                    <td>${PageInfo.pageNum}</td>
-                </tr>
-                <tr>
-                    <th>页面大小</th>
-                    <td>${PageInfo.pageSize}</td>
-                </tr>
-                <tr>
-                    <th>起始行号(>=)</th>
-                    <td>${PageInfo.startRow}</td>
-                </tr>
-                <tr>
-                    <th>终止行号(<=)</th>
-                    <td>${PageInfo.endRow}</td>
-                </tr>
-                <tr>
-                    <th>总结果数</th>
-                    <td>${PageInfo.total}</td>
-                </tr>
-                <tr>
-                    <th>总页数</th>
-                    <td>${PageInfo.pages}</td>
-                </tr>
-                <tr>
-                    <th>第一页</th>
-                    <td>${PageInfo.firstPage}</td>
-                </tr>
-                <tr>
-                    <th>前一页</th>
-                    <td>${PageInfo.prePage}</td>
-                </tr>
-                <tr>
-                    <th>下一页</th>
-                    <td>${PageInfo.nextPage}</td>
-                </tr>
-                <tr>
-                    <th>最后一页</th>
-                    <td>${PageInfo.lastPage}</td>
-                </tr>
-                <tr>
-                    <th>是否为第一页</th>
-                    <td>${PageInfo.isFirstPage}</td>
-                </tr>
-                <tr>
-                    <th>是否为最后一页</th>
-                    <td>${PageInfo.isLastPage}</td>
-                </tr>
-                <tr>
-                    <th>是否有前一页</th>
-                    <td>${PageInfo.hasPreviousPage}</td>
-                </tr>
-                <tr>
-                    <th>是否有下一页</th>
-                    <td>${PageInfo.hasNextPage}</td>
-                </tr>
-            </table>
-         </c:if>
+
+<div class="panel admin-panel">
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>预约挂号信息为：</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="">    
+      
+      <c:forEach items="${sch}" var="sch">
+     
+      <div class="form-group">
+        <div class="label">
+          <label>挂号数量</label>
+        </div>
+        <div class="field">
+      <input type="text" class="input"  name="total" style="width: 25%; float: left" value="${sch.total }" readonly="readonly" />
+           <div class="tipss"></div>
+        </div>
+      </div>
+       <div class="form-group">
+        <div class="label">
+          <label>起始时间</label>
+        </div>
+        <div class="field">
+         <div class='input-group date date form_datetime col-md-3' id='datetimepicker9'>
+                <input type='text' class="form-control" id="start" name="sTime" value="${sch.sTime }" readonly="readonly" />
+            </div>
+             
+          <div class="tips"></div>
+         
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>结束时间</label>
+        </div>
+        <div class="field">
+           <div class='input-group date date form_datetime col-md-3' id='datetimepicker8'>
+                <input type='text' class="form-control" id="end" name="eTime" value="${sch.eTime }" readonly="readonly"/>
+            </div>
+            <div class="tips"></div>
+            </div>
+           </div>
+       <div class="form-group">
+        <div class="label">
+          <label>挂号价格</label>
+        </div>
+        <div class="field">
+         <input type="text" class="input"  name="price" style="width: 25%; float: left" value="${sch.price }" readonly="readonly" />
+          <div class="tipss"></div>
+        </div>
+      </div>
+         </c:forEach>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 </body>
+
 </html>

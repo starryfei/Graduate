@@ -23,8 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageInfo;
 import com.starry.entity.Department;
+import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.OrderInfo;
+import com.starry.entity.Sch;
 import com.starry.service.IDepartmentService;
 import com.starry.service.IDoctorService;
 
@@ -50,6 +53,7 @@ public class DoctorController {
 	public IDepartmentService getDepartmentService() {
 		return departmentService;
 	}
+	
 	/*@RequestMapping(value = "Djson", produces = "application/json")
 	public @ResponseBody List<DoctorInfo> getJson() {
 		List<DoctorInfo> list = doctorService.selectAll();
@@ -72,7 +76,13 @@ public class DoctorController {
 		System.out.println("doctor的信息"+doctors);
 		return "updateDoctor";
 	}
-	
+	@RequestMapping(value="getByDoctor")
+	public String getByDoctor(String dNumber,Model model){
+		List<Doctor> doctors = doctorService.getById(dNumber);
+		model.addAttribute("doctor", doctors);
+		System.out.println("doctor的信息"+doctors);
+		return "getByDoctorInfo";
+	}
 //, method = RequestMethod.POST
 	@RequestMapping(value = "Ddelete")
 	public String delete( String dNumber) {
@@ -98,9 +108,11 @@ public class DoctorController {
 		String path = session.getServletContext().getRealPath("/");
 		System.out.println("getRealPath('/'):" + path);
 		int end = path.indexOf("t", 19);
-		String prePath = path.substring(0, end);
-		String realPath = "d:\\temp";
-		System.out.println("DEBUG:" + realPath);
+//		String prePath = path.substring(0, end);
+//		String realPath = "d:\\temp";
+		String prePath = System.getProperty("user.dir");
+		String realPath = prePath+"\\WebContent\\images";
+		System.out.println("当前的项目的路劲"+realPath);
 		String picName = new Date().getTime() + ".jpg";
 		if (!image.isEmpty()) {
 			try {
@@ -160,5 +172,39 @@ public class DoctorController {
 			return "allDoctor";
 		}
 		return "404";
+	}
+	@RequestMapping(value = "getD")
+	public String getDe(@RequestParam("doctorname") String dNumber,Model model){
+		System.out.println(dNumber);
+		List<DepartmentInfo> departmentInfos = doctorService.getD(dNumber);
+		System.out.println("获取"+departmentInfos);
+		model.addAttribute("department", departmentInfos);
+		
+		return "total";
+	}
+	
+	@RequestMapping(value="addSch")
+	public String addSch(@RequestParam("dNumber") String dNumber,@RequestParam("cNumber") String cNumber,
+			@RequestParam("total") int total,@RequestParam("price") String price,@RequestParam("sTime") String sTime,
+			@RequestParam("eTime") String eTime){
+		String sNumber = dNumber;
+		Sch sch = new Sch(sNumber, dNumber, cNumber, total, price, sTime, eTime);
+		doctorService.insertSch(sch);
+	return "redirect:/getS?sNumber="+sNumber;
+	}
+	@RequestMapping(value="getS")
+	public String getSInfo(@RequestParam("sNumber") String sNumber,Model model){
+		List<Sch> list = doctorService.getSInfo(sNumber);
+		System.out.println(list);
+		model.addAttribute("sch", list);
+		return "success";
+	}
+	
+	@RequestMapping("getOrederByDoctor")
+	public String getOrederByDoctor(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,@RequestParam("sNumber") String sNumber,Model model){
+		List<OrderInfo> orderinfo = doctorService.getOrderByDoctor(sNumber, pageNum, pageSize);
+		PageInfo<OrderInfo> list = new PageInfo<OrderInfo>(orderinfo);
+		model.addAttribute("PageInfo",list);
+		return "orderByDoctor";
 	}
 }

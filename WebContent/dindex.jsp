@@ -27,33 +27,33 @@
 </div>
 <div class="leftnav">
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
-  <h2><span class="icon-user"></span>科室管理</h2>
+  <!-- <h2><span class="icon-user"></span>科室管理</h2>
   <ul style="display:block">
    <li><a href="page.jsp" target="right"><span class="icon-caret-right"></span>添加科室</a></li>  
   
    
-    <li><a href="./getDepart?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>科室信息</a></li>   
+    <li><a href="./getDepart?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>科室信息</a></li>  -->  
   
   <!--   <li><a href="column.html" target="right"><span class="icon-caret-right"></span>删除科室</a></li> -->
   </ul>   
-  <h2><span class="icon-user"></span>医生管理</h2>
+  <h2><span class="icon-user"></span>个人中心</h2>
   <ul>
-    <li><a href="./getName" target="right"><span class="icon-caret-right"></span>添加医生</a></li>
+    <li><a href="./getD?doctorname=${name }" target="right"><span class="icon-caret-right"></span>挂号设置</a></li>
   <!--   <li><a href="list.html" target="right"><span class="icon-caret-right"></span></a></li>
     <li><a href="add.html" target="right"><span class="icon-caret-right"></span>删除医生</a></li> -->
-    <li><a href="./getAllDoctor?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>医生管理</a></li>        
+    <li><a href="./getByDoctor?dNumber=${name}" target="right"><span class="icon-caret-right"></span>个人信息</a></li>        
   </ul>  
-  <h2><span class="icon-pencil-square-o"></span>缴帐管理</h2>
+  <h2><span class="icon-pencil-square-o"></span>预约中心</h2>
   <ul>
-    <li><a href="./getAllOreder?pageNum=1&pageSize=3" target="right"><span class="icon-caret-right"></span>查看预约名单</a></li>
-       <li><a href="./getCount?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>医生预约状态</a></li>
+    <li><a href="./getOrederByDoctor?pageNum=1&pageSize=3&sNumber=${name }" target="right"><span class="icon-caret-right"></span>预约名单</a></li>
+    <!--    <li><a href="./getCount?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>医生预约状态</a></li> -->
     </ul>
-    <h2><span class="icon-pencil-square-o"></span>其他</h2>
+   <!--  <h2><span class="icon-pencil-square-o"></span>其他</h2>
     <ul>
-   <!--   <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li> -->
+     <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
     <li><a href="./getFeedBack?pageNum=1&pageSize=2" target="right"><span class="icon-caret-right"></span>反馈管理</a></li>
       <li><a href="new.jsp" target="right"><span class="icon-caret-right"></span>公告管理</a></li>          
-    </ul>
+    </ul> -->
 </div>
 <script type="text/javascript">
 $(function(){

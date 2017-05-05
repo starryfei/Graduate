@@ -65,9 +65,9 @@ public class IAdministorServiceImpl implements IAdministorService {
 	}
 
 	@Override
-	public List<Count> getCount() {
+	public List<Count> getCount(int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return administorDao.getCount();
+		return administorDao.getCount(pageNum,pageSize);
 	}
 
 	@Override
@@ -83,8 +83,8 @@ public class IAdministorServiceImpl implements IAdministorService {
 	}
 
 	@Override
-	public List<New> getAllNew() {
+	public List<New> getAllNew(int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
-		return administorDao.getAllNew();
+		return administorDao.getAllNew(pageNum,pageSize);
 	}
 }

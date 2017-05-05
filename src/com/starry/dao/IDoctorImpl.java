@@ -9,9 +9,13 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.github.pagehelper.PageHelper;
+import com.starry.entity.Administor;
 import com.starry.entity.Department;
+import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.OrderInfo;
+import com.starry.entity.Sch;
 
 @Repository("doctorDao")
 public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
@@ -69,6 +73,43 @@ public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
 	public List<DoctorInfo> findDepartName(String info,int pageNum,int pageSize) {
 		 PageHelper.startPage(pageNum,pageSize);
 		return this.getSqlSession().selectList("getDoctorBycNumber", info);
+	}
+
+	@Override
+	public boolean login(Doctor doctor) {
+		List<Doctor> list = this.getSqlSession().selectList("doctorlogin", doctor);
+		System.out.println("impl"+list);
+		if(!list.isEmpty())
+			return true;
+		return false;
+	}
+
+	@Override
+	public int insertSch(Sch sch) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().update("addSch", sch);
+	}
+
+	@Override
+	public List<DepartmentInfo> getD(String dNumber) {
+		// TODO Auto-generated method stub
+		List<DepartmentInfo> list = this.getSqlSession().selectList("getDe", dNumber);
+		System.out.println(list);
+		return this.getSqlSession().selectList("getDe", dNumber);
+	}
+
+	@Override
+	public List<Sch> getSInfo(String sNumber) {
+		// TODO Auto-generated method stub
+		List<Sch> list = this.getSqlSession().selectList("getSchInfo",sNumber);
+		System.out.println(list);
+		return this.getSqlSession().selectList("getSchInfo",sNumber);
+	}
+
+	@Override
+	public List<OrderInfo> getOrderByDoctor(String sNumber,int pageNum,int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		return this.getSqlSession().selectList("getOrderbyDoctor", sNumber);
 	}
 
 }
