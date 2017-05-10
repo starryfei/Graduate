@@ -1,9 +1,9 @@
 package com.starry.entity;
-import 	java.sql.Timestamp;
+//import 	java.sql.Timestamp;
 public class Feedback {
 	private Integer id;
 	private String fname;
-	private Timestamp ftime;
+	private String ftime;
 	private String message;
 	public Integer getId() {
 		return id;
@@ -17,10 +17,10 @@ public class Feedback {
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-	public Timestamp getFtime() {
+	public String getFtime() {
 		return ftime;
 	}
-	public void setFtime(Timestamp ftime) {
+	public void setFtime(String ftime) {
 		this.ftime = ftime;
 	}
 	public String getMessage() {
@@ -34,9 +34,15 @@ public class Feedback {
 		return "Feedback [id=" + id + ", fname=" + fname + ", ftime=" + ftime
 				+ ", message=" + message + "]";
 	}
-	public Feedback(Integer id, String fname, Timestamp ftime, String message) {
+	public Feedback(Integer id, String fname, String ftime, String message) {
 		super();
 		this.id = id;
+		this.fname = fname;
+		this.ftime = ftime;
+		this.message = message;
+	}
+	public Feedback(String fname, String ftime, String message) {
+		super();
 		this.fname = fname;
 		this.ftime = ftime;
 		this.message = message;

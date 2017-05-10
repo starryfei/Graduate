@@ -14,6 +14,8 @@ import com.starry.entity.Department;
 import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.DoctorInfoJson;
+import com.starry.entity.Jsondoctor;
 import com.starry.entity.OrderInfo;
 import com.starry.entity.Sch;
 
@@ -110,6 +112,24 @@ public class IDoctorImpl extends SqlSessionDaoSupport implements IDoctorDao {
 	public List<OrderInfo> getOrderByDoctor(String sNumber,int pageNum,int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return this.getSqlSession().selectList("getOrderbyDoctor", sNumber);
+	}
+
+
+	@Override
+	public List<DoctorInfoJson> getJsonDoctor(DoctorInfoJson doctorInfoJson) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("JsonDoctor", doctorInfoJson);
+	}
+
+	@Override
+	public List<Jsondoctor> getJsonDoctorByName(String name) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().selectList("JsonDoctorByName", name);
+	}
+
+	@Override
+	public List<Jsondoctor> getAllJsonDoctor(String cNumber) {
+		return this.getSqlSession().selectList("JsonAllDoctor",cNumber);
 	}
 
 }

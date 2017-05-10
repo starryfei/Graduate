@@ -54,12 +54,14 @@ public class DoctorController {
 		return departmentService;
 	}
 	
-	/*@RequestMapping(value = "Djson", produces = "application/json")
+@RequestMapping(value = "Djson", produces = "application/json")
 	public @ResponseBody List<DoctorInfo> getJson() {
-		List<DoctorInfo> list = doctorService.selectAll();
+		List<DoctorInfo> list = doctorService.selectAll(1,4);
 		System.out.println("DoctorController" + list);
 		return list;
-	}*/
+	}
+
+
 	@RequestMapping(value = "getAllDoctor")
 	public  String selectAll(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize,Model model) {
 		List<DoctorInfo> alldoctor = doctorService.selectAll(pageNum,pageSize);
@@ -145,7 +147,7 @@ public class DoctorController {
 		Doctor doctor = new Doctor(dNumber, name, cNumber, dInfo, dResume, dTel, dEmail);
 		System.out.println("修改的医生信息："+doctor);
 		doctorService.update(doctor);
-		return "redirect:/getAllDoctor";
+		return "redirect:/getAllDoctor?pageNum=1&pageSize=3";
 	}
 			
 	@RequestMapping(value = "findDoctor")

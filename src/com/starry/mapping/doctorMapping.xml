@@ -55,4 +55,34 @@
 		from uorder,sche,user,doctor 
 		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber and doctor.dNumber=#{dNumber} order by uorder.oTime desc
 	</select>
+	
+	<!--json  -->
+<!-- 	String dNumber, String dName, String name,
+			String dTel, String dInfo, String dEmail, String dResume,
+			String img, Integer total, String price, String sTime, String eTime -->
+	<select id="JsonDoctor" resultType="com.starry.entity.DoctorInfoJson">
+				select doctor.dNumber,department.dName,doctor.name,doctor.dTel,doctor.dInfo,doctor.dEmail,doctor.dResume,	doctor.image,sche.total,sche.price,sche.sTime,sche.eTime
+					from doctor LEFT JOIN sche on doctor.dNumber=sche.dNumber 
+					 LEFT JOIN department	on department.cNumber=doctor.cNumber
+			    where doctor.dNumber=#{dNumber} and doctor.cNumber=#{cNumber}
+	
+	</select>
+		<select id="JsonAllDoctor" resultType="com.starry.entity.Jsondoctor">
+			select doctor.dNumber,department.dName,doctor.name,doctor.dInfo,doctor.image
+			from doctor,department
+			where  doctor.cNumber=department.cNumber and department.cNumber=#{cNumber}
+	
+	</select>
+	<select id="JsonDoctorByName" resultType="com.starry.entity.Jsondoctor">
+			select doctor.dNumber,department.dName,doctor.name,doctor.dInfo,doctor.image
+			from doctor,department
+			where  doctor.cNumber=department.cNumber and doctor.name LIKE CONCAT(CONCAT('%', #{name}), '%')
+	
+	</select>
+	<select id="JsonDoctorStop" resultType="com.starry.entity.DoctorInfoJson">
+			select doctor.dNumber,department.dName,doctor.name,doctor.dInfo,doctor.image
+			from doctor,department,sche
+			where  doctor.cNumber=department.cNumber and sche.cNumber=doctor.dNumber and #{time} &lt; sche.sTime and #{time} &gt; sche.eTime
+	
+	</select>
 </mapper>

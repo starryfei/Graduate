@@ -10,15 +10,16 @@ import javax.persistence.Entity;
  *
  */
 public class Order {
-	private int oNumber;
+	private Integer oNumber;
 	private String sNumber;
-	private int id;
-	private Date oTime;
+	private Integer id;
+	private String oTime;
 	private String price;
-	public int getoNumber() {
+	private Integer status;
+	public Integer getoNumber() {
 		return oNumber;
 	}
-	public void setoNumber(int oNumber) {
+	public void setoNumber(Integer oNumber) {
 		this.oNumber = oNumber;
 	}
 	public String getsNumber() {
@@ -27,16 +28,16 @@ public class Order {
 	public void setsNumber(String sNumber) {
 		this.sNumber = sNumber;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getoTime() {
+	public String getoTime() {
 		return oTime;
 	}
-	public void setoTime(Date oTime) {
+	public void setoTime(String oTime) {
 		this.oTime = oTime;
 	}
 	public String getPrice() {
@@ -45,11 +46,27 @@ public class Order {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Integer getStatus() {
+		return status;
+	}
 	@Override
 	public String toString() {
 		return "Order [oNumber=" + oNumber + ", sNumber=" + sNumber
 				+ ", id=" + id + ", oTime=" + oTime + ", price=" + price
 				+ "]";
+	}
+	public Order(String sNumber, Integer id, String oTime,
+			String price,Integer status) {
+		super();
+//		this.oNumber = oNumber;
+		this.sNumber = sNumber;
+		this.id = id;
+		this.oTime = oTime;
+		this.price = price;
+		this.status = status;
 	}
 	
 	

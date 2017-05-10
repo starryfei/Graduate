@@ -10,6 +10,8 @@ import com.starry.dao.IDoctorDao;
 import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.DoctorInfoJson;
+import com.starry.entity.Jsondoctor;
 import com.starry.entity.OrderInfo;
 import com.starry.entity.Sch;
 
@@ -93,6 +95,21 @@ public class IDoctorServiceImpl implements IDoctorService {
 	public List<OrderInfo> getOrderByDoctor(String sNumber,int pageNum,int pageSize) {
 		// TODO Auto-generated method stub
 		return doctorDao.getOrderByDoctor(sNumber,pageNum,pageSize);
+	}
+	@Override
+	public List<DoctorInfoJson> JsonDoctor(String dNumber,String cNumber) {
+		DoctorInfoJson doctorInfoJson = new DoctorInfoJson(dNumber, cNumber);
+		return doctorDao.getJsonDoctor(doctorInfoJson);
+	}
+	@Override
+	public List<Jsondoctor> JsonDoctorByName(String name) {
+		// TODO Auto-generated method stub
+		return doctorDao.getJsonDoctorByName(name);
+	}
+	@Override
+	public List<Jsondoctor> getAllJsonDoctor(String cNumber) {
+		// TODO Auto-generated method stub
+		return doctorDao.getAllJsonDoctor(cNumber);
 	}
 
 }

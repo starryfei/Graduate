@@ -10,11 +10,12 @@ import javax.persistence.Id;
  *
  */
 public class User {
-	private String name;
+	private String uname;
 	private String pwd;
-	private int id;
+	private Integer id;
 	private String tel;
 	private String info;
+//	private String status;
 	
 	public String getTel() {
 		return tel;
@@ -34,20 +35,19 @@ public class User {
 	public User() {
 	}
 
-	public User(String name, String pwd, String tel, String info) {
+	public User(String uname, String pwd, String tel, String info) {
 		super();
-		this.name = name;
+		this.uname = uname;
 		this.pwd = pwd;
 		this.tel=tel;
 		this.info=info;
 	}
 
-	public String getName() {
-		return name;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getUname() {
+		return uname;
 	}
 
 	public String getPwd() {
@@ -58,18 +58,27 @@ public class User {
 		this.pwd = pwd;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", pwd=" + pwd + ", id=" + id + ", tel="
+		return "User [uname=" + uname + ", pwd=" + pwd + ", id=" + id + ", tel="
 				+ tel + ", info=" + info + "]";
+	}
+
+	public User(String uname, String pwd, Integer id, String tel, String info) {
+		super();
+		this.uname = uname;
+		this.pwd = pwd;
+		this.id = id;
+		this.tel = tel;
+		this.info = info;
 	}
 
 

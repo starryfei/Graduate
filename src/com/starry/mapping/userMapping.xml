@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.starry.dao.IUserDao">
 	<select id="getUser" resultType="com.starry.entity.User">
-		select * from User
+			select * from user
+		where
+		uname=#{uname} and pwd=#{pwd}
 	</select>
 
 	<delete id="deleteById" parameterType="com.starry.entity.User">
@@ -10,6 +12,32 @@
 		where id=#{id}
 	</delete>
 	<insert id="register"  parameterType="com.starry.entity.User">
-      insert into User(name,pwd,tel,info) values(#{name},#{pwd},#{tel},#{info})
+      insert into User(uname,pwd,tel,info) values(#{uname},#{pwd},#{tel},#{info})
      </insert>
+     
+     <update id="updateUser" parameterType="com.starry.entity.User">
+     update User 
+     set uname=#{uname},pwd=#{pwd},tel=#{tel},info=#{info}
+     where id=#{id}
+     
+     </update>
+     
+     <insert id="insertOrder"  parameterType="com.starry.entity.Order">
+      INSERT into uorder(sNumber,id,oTime,price,status)
+       VALUES
+       (#{sNumber},	#{id},	#{oTime},#{price},#{status})
+     </insert>
+     <delete id="deleteOrderByid" parameterType="com.starry.entity.Order">
+     delete from uorder where oNumber=#{oNumber} 
+     </delete>
+     
+     <select id="getOrderByUserId" resultType="com.starry.entity.OrderInfo">
+		select uorder.oNumber,user.uname,doctor.name,uorder.price ,uorder.oTime,uorder.status
+		from uorder,sche,user,doctor 
+		where uorder.id=user.id and uorder.sNumber=sche.sNumber and sche.dNumber=doctor.dNumber and uorder.id=#{id} order by uorder.oTime desc
+	</select>
+	
+	<insert id="insertfeedback" parameterType="com.starry.entity.Feedback">
+	INSERT into feedback(fname,ftime,message) values(#{fname},#{ftime},#{message})
+	</insert>
 </mapper>

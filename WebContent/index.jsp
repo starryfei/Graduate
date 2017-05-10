@@ -72,7 +72,7 @@ $(function(){
   <li><a href="./getAllNew?pageNum=1&pageSize=3" target="right" class="icon-home"> 首页</a></li>
   <li><a href="##" id="a_leader_txt">网站信息</a></li>
   <li><b>当前语言：</b><span style="color:red;">中文</php></span>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换语言：<a href="##">中文</a> &nbsp;&nbsp;<a href="##">英文</a> </li>
+ <!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换语言：<a href="##">中文</a> &nbsp;&nbsp;<a href="##">英文</a> </li> -->
 </ul>
 <div class="admin">
   <iframe scrolling="auto" rameborder="0" src="./getAllNew?pageNum=1&pageSize=3" name="right" width="100%" height="100%"></iframe>

@@ -5,6 +5,8 @@ import java.util.List;
 import com.starry.entity.DepartmentInfo;
 import com.starry.entity.Doctor;
 import com.starry.entity.DoctorInfo;
+import com.starry.entity.DoctorInfoJson;
+import com.starry.entity.Jsondoctor;
 import com.starry.entity.OrderInfo;
 import com.starry.entity.Sch;
 
@@ -33,4 +35,11 @@ public interface IDoctorDao {
 	public abstract List<Sch> getSInfo(String sNumber);
 	
 	public abstract List<OrderInfo> getOrderByDoctor(String sNumber,int pageNum,int pageSize);
+	
+	
+	//json
+	public abstract List<DoctorInfoJson> getJsonDoctor(DoctorInfoJson doctorInfoJson);
+	
+	public abstract List<Jsondoctor> getAllJsonDoctor(String cNumber);
+	public abstract List<Jsondoctor> getJsonDoctorByName(String name);
 }

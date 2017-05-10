@@ -9,7 +9,7 @@ public class OrderInfo {
 	private String name;
 	
 	private String price;
-	private Timestamp time;
+	private String time;
 	private Integer status;
 	public Integer getoNumber() {
 		return oNumber;
@@ -35,10 +35,10 @@ public class OrderInfo {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public Timestamp getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(Timestamp time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	public Integer getStatus() {
@@ -48,7 +48,7 @@ public class OrderInfo {
 		this.status = status;
 	}
 	public OrderInfo(Integer oNumber,  String uname,String name, String price,
-			Timestamp time, Integer status) {
+			String time, Integer status) {
 		super();
 		this.oNumber = oNumber;
 		this.name = name;
